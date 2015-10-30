@@ -41,14 +41,6 @@ public class Vehicle
         car,
         truck
     }
-
-    public enum Direction
-    {
-        up,
-        down,
-        left,
-        right
-    }
     public enum Orientation
     {
         horizontal,
