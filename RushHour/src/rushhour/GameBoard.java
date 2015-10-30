@@ -54,11 +54,9 @@ public class GameBoard
     private HashMap<String, Component> grids;
     private ArrayList<Vehicle> vehicles;
 
-    // TODO: add error checking code
     public void addVehicle(Vehicle newVehicle)
     {
         vehicles.add(newVehicle);
-
         this.drawAllVehicles();
     }
 
@@ -108,11 +106,9 @@ public class GameBoard
         }
 
         JLabel frontGrid = (JLabel) grids.get(front);
-        frontGrid.setText("front");
         frontGrid.setBackground(vehicle.color());
 
         JLabel backGrid = (JLabel) grids.get(back);
-        backGrid.setText("back");
         backGrid.setBackground(vehicle.color());
 
         if (type == Vehicle.Type.truck)
@@ -129,7 +125,6 @@ public class GameBoard
                 middle = "Grid" + vehicle.x() + (vehicle.y() + 1);
             }
             JLabel middleGrid = (JLabel) grids.get(middle);
-            middleGrid.setText("middle");
             middleGrid.setBackground(vehicle.color());
 
         }
