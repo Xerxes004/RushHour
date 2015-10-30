@@ -1,94 +1,107 @@
+
 package rushhour;
 
 import java.awt.Color;
+import java.util.HashMap;
 
 public class Vehicle
 {
-    public Vehicle(Type type, Color color, int x, int y, Orientation orientation)
+
+    public Vehicle(Type type, String color, int x, int y, Orientation orientation)
     {
         this.type = type;
-        this.color = color;
         this.x = x;
         this.y = y;
         this.orientation = orientation;
+        this.length = (type == Type.car) ? 2 : 3;
         
-        if (type == Type.car)
+        this.colorString = color;
+        
+        this.possibleColors = new String[]
         {
-            this.length = 2;
-        }
-        else
-        {
-            this.length = 3;
-        }
+            "red","lime","purple","orange","blue","yellow","lightblue","aqua"
+        };
+        
+        this.colorMap = new HashMap<>();
+        
+        this.colorMap.put("red", Color.red);
+        this.colorMap.put("lime", Color.decode("0x66FF33"));
+        this.colorMap.put("purple", Color.decode("0xCC00CC"));
+        this.colorMap.put("orange", Color.orange);
+        this.colorMap.put("blue", Color.blue);
+        this.colorMap.put("yellow", Color.yellow);
+        this.colorMap.put("lightblue", Color.decode("0x66CCFF"));
+        this.colorMap.put("aqua", Color.cyan);
+        
+        this.color = this.colorMap.get(color);
     }
     
-    public enum Type {
+    public enum Type
+    {
         car,
         truck
     }
 
-    public enum Direction {
+    public enum Direction
+    {
         up,
         down,
         left,
         right
     }
-    
-    final private Type type;
-    final private Color color;
-    final private int length;
-    private Orientation orientation;
-    private int x;
-    private int y;
-    
     public enum Orientation
     {
         horizontal,
         vertical
     }
-    
+
+    final private Type type;
+    final private Color color;
+    final private String colorString;
+    final private String[] possibleColors;
+    final private HashMap<String, Color> colorMap;
+    final private int length;
+    final private Orientation orientation;
+    private int x;
+    private int y;
+
     public String typeString()
     {
-        if (this.type == Type.car)
-        {
-            return "car";
-        }
-        else
-        {
-            return "truck";
-        }
+        return (this.type == Type.car) ? "car" : "truck";
     }
-    
+
     public Type type()
     {
         return this.type;
     }
-    
+
     public Color color()
     {
         return this.color;
     }
-    
+
     public int length()
     {
         return this.length;
     }
-    
+
     public int x()
     {
         return this.x;
     }
+
     public int y()
     {
         return this.y;
     }
+
     public Orientation orientation()
     {
         return this.orientation;
     }
-    
-    
-    public boolean left() throws InvalidMovementException
+
+    public boolean left()
+        throws InvalidMovementException
     {
         if (orientation == Orientation.horizontal)
         {
@@ -109,7 +122,21 @@ public class Vehicle
         }
     }
     
-    public boolean right() throws InvalidMovementException
+    public boolean left(int spaces) throws InvalidMovementException
+    {
+        for (int i = 0; i < spaces; i++)
+        {
+            if(!left())
+            {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+
+    public boolean right()
+        throws InvalidMovementException
     {
         if (orientation == Orientation.horizontal)
         {
@@ -130,7 +157,21 @@ public class Vehicle
         }
     }
     
-    public boolean up() throws InvalidMovementException
+    public boolean right(int spaces) throws InvalidMovementException
+    {
+        for (int i = 0; i < spaces; i++)
+        {
+            if(!right())
+            {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+
+    public boolean up()
+        throws InvalidMovementException
     {
         if (orientation == Orientation.vertical)
         {
@@ -151,7 +192,21 @@ public class Vehicle
         }
     }
     
-    public boolean down() throws InvalidMovementException
+    public boolean up(int spaces) throws InvalidMovementException
+    {
+        for (int i = 0; i < spaces; i++)
+        {
+            if(!up())
+            {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+
+    public boolean down()
+        throws InvalidMovementException
     {
         if (orientation == Orientation.vertical)
         {
@@ -170,5 +225,18 @@ public class Vehicle
             String msg = "This vehicle is not oriented that way!";
             throw new InvalidMovementException(msg);
         }
+    }
+    
+    public boolean down(int spaces) throws InvalidMovementException
+    {
+        for (int i = 0; i < spaces; i++)
+        {
+            if(!down())
+            {
+                return false;
+            }
+        }
+        
+        return true;
     }
 }
