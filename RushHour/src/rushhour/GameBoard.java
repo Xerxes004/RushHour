@@ -1,9 +1,13 @@
+
 /**
  * Author : Wesley Kelly
  */
 package rushhour;
 
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.List;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JLabel;
 
@@ -11,26 +15,28 @@ import javax.swing.JLabel;
  *
  * @author WesKellyPC
  */
-public class GameBoard extends javax.swing.JFrame {
+public class GameBoard
+    extends javax.swing.JFrame
+{
 
     /**
      * Creates new form GameBoard
      */
-    public GameBoard() {
+    public GameBoard()
+    {
         initComponents();
-        
+
         grids = new HashMap<>();
-        vehicles = new Vehicle[0];
-        
+        vehicles = new ArrayList<>();
+
         // all components in GridPanel are JLabels
-        defaultGrid = (JLabel)GridPanel.getComponent(0);
-        
+        defaultColor = GridPanel.getComponent(0).getBackground();
+
         for (Component g : GridPanel.getComponents())
         {
-            
-            
-            JLabel grid = (JLabel)g;
-            
+
+            JLabel grid = (JLabel) g;
+
             if (grid != null)
             {
                 if (g.getName() != null)
@@ -42,37 +48,30 @@ public class GameBoard extends javax.swing.JFrame {
             }
         }
     }
-    
-    private final JLabel defaultGrid;
-    
+
+    private final Color defaultColor;
+
     private HashMap<String, Component> grids;
-    private Vehicle vehicles[];
-    
-    
+    private ArrayList<Vehicle> vehicles;
+
     // TODO: add error checking code
     public void addVehicle(Vehicle newVehicle)
     {
-        Vehicle temp[] = vehicles;
-        Vehicle newVehiclesArray[] = new Vehicle[vehicles.length + 1];
-        
-        System.arraycopy(temp, 0, newVehiclesArray, 0, temp.length);
-        newVehiclesArray[newVehiclesArray.length - 1] = newVehicle;
-        
-        vehicles = newVehiclesArray;
-        
+        vehicles.add(newVehicle);
+
         this.drawAllVehicles();
     }
-    
+
     private void redrawBoard()
     {
         for (Component comp : GridPanel.getComponents())
         {
-            JLabel grid = (JLabel)comp;
-            //grid.setText("hello");
-            grid.setBackground(defaultGrid.getBackground());
+            JLabel grid = (JLabel) comp;
+            grid.setBackground(defaultColor);
+            grid.setText("");
         }
     }
-    
+
     private void drawAllVehicles()
     {
         redrawBoard();
@@ -81,55 +80,60 @@ public class GameBoard extends javax.swing.JFrame {
             drawVehicle(v);
         }
     }
-    
+
     public void drawOneVehicle(Vehicle vehicle)
     {
         redrawBoard();
         drawVehicle(vehicle);
     }
-    
+
     private void drawVehicle(Vehicle vehicle)
     {
         String front = "Grid" + vehicle.x() + vehicle.y();
-        
+
         Vehicle.Type type = vehicle.type();
         Vehicle.Orientation orientation = vehicle.orientation();
-        
+
         int offset = (type == Vehicle.Type.car ? 1 : 2);
-           
+
         String back = "";
-        
+
         if (orientation == Vehicle.Orientation.horizontal)
         {
             back = "Grid" + (vehicle.x() + offset) + vehicle.y();
         }
         else
         {
-            back = "Grid" + vehicle.x() + (vehicle.y() - offset);
+            back = "Grid" + vehicle.x() + (vehicle.y() + offset);
         }
-        
-        JLabel frontGrid = (JLabel)grids.get(front);
+
+        JLabel frontGrid = (JLabel) grids.get(front);
         frontGrid.setText("front");
         frontGrid.setBackground(vehicle.color());
-        
-        JLabel backGrid = (JLabel)grids.get(back);
+
+        JLabel backGrid = (JLabel) grids.get(back);
         backGrid.setText("back");
         backGrid.setBackground(vehicle.color());
-        
+
         if (type == Vehicle.Type.truck)
         {
+            String middle = "";
             if (orientation == Vehicle.Orientation.horizontal)
             {
-                String middle = "Grid" + (vehicle.x() + 1) + vehicle.y();
-                JLabel middleGrid = (JLabel)grids.get(middle);
-                middleGrid.setText("middle");
-                middleGrid.setBackground(vehicle.color());
+                middle = "Grid" + (vehicle.x() + 1) + vehicle.y();
                 
+
             }
-            
+            else
+            {
+                middle = "Grid" + vehicle.x() + (vehicle.y() + 1);
+            }
+            JLabel middleGrid = (JLabel) grids.get(middle);
+            middleGrid.setText("middle");
+            middleGrid.setBackground(vehicle.color());
+
         }
     }
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -138,7 +142,8 @@ public class GameBoard extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         GridPanel = new javax.swing.JPanel();
         Grid02 = new javax.swing.JLabel();
@@ -178,8 +183,6 @@ public class GameBoard extends javax.swing.JFrame {
         Grid50 = new javax.swing.JLabel();
         Grid51 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        ControlPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -518,7 +521,7 @@ public class GameBoard extends javax.swing.JFrame {
             .addGroup(GridPanelLayout.createSequentialGroup()
                 .addGroup(GridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GridPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 6, Short.MAX_VALUE)
                         .addComponent(Grid00, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Grid01, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -531,7 +534,7 @@ public class GameBoard extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Grid05, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(GridPanelLayout.createSequentialGroup()
-                        .addGap(67, 67, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(GridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.CENTER, GridPanelLayout.createSequentialGroup()
                                 .addComponent(Grid30, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -654,29 +657,12 @@ public class GameBoard extends javax.swing.JFrame {
         jLabel1.setFocusable(false);
         jLabel1.setName(""); // NOI18N
 
-        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
-
-        javax.swing.GroupLayout ControlPanelLayout = new javax.swing.GroupLayout(ControlPanel);
-        ControlPanel.setLayout(ControlPanelLayout);
-        ControlPanelLayout.setHorizontalGroup(
-            ControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        ControlPanelLayout.setVerticalGroup(
-            ControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ControlPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(GridPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -687,14 +673,11 @@ public class GameBoard extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(239, 239, 239)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(GridPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jSeparator1)
-                            .addComponent(ControlPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(GridPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(227, 227, 227)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -706,40 +689,55 @@ public class GameBoard extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        }
+        catch (ClassNotFoundException ex)
+        {
             java.util.logging.Logger.getLogger(GameBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+        }
+        catch (InstantiationException ex)
+        {
             java.util.logging.Logger.getLogger(GameBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        }
+        catch (IllegalAccessException ex)
+        {
             java.util.logging.Logger.getLogger(GameBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        }
+        catch (javax.swing.UnsupportedLookAndFeelException ex)
+        {
             java.util.logging.Logger.getLogger(GameBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
                 new GameBoard().setVisible(true);
             }
         });
     }
-    
+
     /**
      * Gets the component with the specified name.
+     *
      * @param name name of component to find
      * @return the component with the specified name, null if not found
      */
@@ -749,7 +747,6 @@ public class GameBoard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel ControlPanel;
     private javax.swing.JLabel Grid00;
     private javax.swing.JLabel Grid01;
     private javax.swing.JLabel Grid02;
@@ -788,6 +785,5 @@ public class GameBoard extends javax.swing.JFrame {
     private javax.swing.JLabel Grid55;
     private javax.swing.JPanel GridPanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
