@@ -46,7 +46,7 @@ public class RushHour
         Vehicle orange = new Vehicle(Vehicle.Type.car, "orange", 0, 4, Vehicle.Orientation.vertical);
         Vehicle blue = new Vehicle(Vehicle.Type.truck, "blue", 3, 1, Vehicle.Orientation.vertical);
         Vehicle yellow = new Vehicle(Vehicle.Type.truck, "yellow", 5, 0, Vehicle.Orientation.vertical);
-        Vehicle lightBlue = new Vehicle(Vehicle.Type.car, "light blue", 4, 4, Vehicle.Orientation.horizontal);
+        Vehicle lightBlue = new Vehicle(Vehicle.Type.car, "lightblue", 4, 4, Vehicle.Orientation.horizontal);
         Vehicle aqua = new Vehicle(Vehicle.Type.truck, "aqua", 2, 5, Vehicle.Orientation.horizontal);
 
         board.addVehicle(red);

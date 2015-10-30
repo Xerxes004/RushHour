@@ -7,18 +7,20 @@ import java.util.HashMap;
 public class Vehicle
 {
 
-    public Vehicle(Type type, String color, int x, int y, Orientation orientation)
+    public Vehicle(Type type, String color, int x, int y,
+                   Orientation orientation)
+        throws VehicleConstructorError
     {
         this.type = type;
         this.x = x;
         this.y = y;
         this.orientation = orientation;
         this.length = (type == Type.car) ? 2 : 3;
-        
+
         this.colorString = color;
-        
+
         this.colorMap = new HashMap<>();
-        
+
         this.colorMap.put("red", Color.red);
         this.colorMap.put("lime", Color.decode("0x66FF33"));
         this.colorMap.put("purple", Color.decode("0xCC00CC"));
@@ -27,17 +29,24 @@ public class Vehicle
         this.colorMap.put("yellow", Color.yellow);
         this.colorMap.put("lightblue", Color.decode("0x66CCFF"));
         this.colorMap.put("aqua", Color.cyan);
-        
+
         this.color = this.colorMap.get(color);
+        if (this.color == null)
+        {
+            throw new VehicleConstructorError(color + " is not a valid color!");
+        }
     }
-    
+
     public enum Type
     {
+
         car,
         truck
     }
+
     public enum Orientation
     {
+
         horizontal,
         vertical
     }
@@ -65,11 +74,12 @@ public class Vehicle
     {
         return this.color;
     }
+
     public String colorString()
     {
         return this.colorString;
     }
-    
+
     public int length()
     {
         return this.length;
@@ -111,17 +121,18 @@ public class Vehicle
             throw new InvalidMovementException(msg);
         }
     }
-    
-    public boolean left(int spaces) throws InvalidMovementException
+
+    public boolean left(int spaces)
+        throws InvalidMovementException
     {
         for (int i = 0; i < spaces; i++)
         {
-            if(!left())
+            if (!left())
             {
                 return false;
             }
         }
-        
+
         return true;
     }
 
@@ -146,17 +157,18 @@ public class Vehicle
             throw new InvalidMovementException(msg);
         }
     }
-    
-    public boolean right(int spaces) throws InvalidMovementException
+
+    public boolean right(int spaces)
+        throws InvalidMovementException
     {
         for (int i = 0; i < spaces; i++)
         {
-            if(!right())
+            if (!right())
             {
                 return false;
             }
         }
-        
+
         return true;
     }
 
@@ -181,17 +193,18 @@ public class Vehicle
             throw new InvalidMovementException(msg);
         }
     }
-    
-    public boolean up(int spaces) throws InvalidMovementException
+
+    public boolean up(int spaces)
+        throws InvalidMovementException
     {
         for (int i = 0; i < spaces; i++)
         {
-            if(!up())
+            if (!up())
             {
                 return false;
             }
         }
-        
+
         return true;
     }
 
@@ -216,17 +229,18 @@ public class Vehicle
             throw new InvalidMovementException(msg);
         }
     }
-    
-    public boolean down(int spaces) throws InvalidMovementException
+
+    public boolean down(int spaces)
+        throws InvalidMovementException
     {
         for (int i = 0; i < spaces; i++)
         {
-            if(!down())
+            if (!down())
             {
                 return false;
             }
         }
-        
+
         return true;
     }
 }
