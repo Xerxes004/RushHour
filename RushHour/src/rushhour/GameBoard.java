@@ -6,7 +6,6 @@ package rushhour;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.List;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JLabel;
