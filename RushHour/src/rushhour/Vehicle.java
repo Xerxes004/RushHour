@@ -8,7 +8,8 @@ public class Vehicle
     {
         this.type = type;
         this.color = color;
-        this.position = new Position(x, y);
+        this.x = x;
+        this.y = y;
         this.orientation = orientation;
         
         if (type == Type.car)
@@ -36,8 +37,9 @@ public class Vehicle
     final private Type type;
     final private Color color;
     final private int length;
-    private Position position;
     private Orientation orientation;
+    private int x;
+    private int y;
     
     public enum Orientation
     {
@@ -45,7 +47,7 @@ public class Vehicle
         vertical
     }
     
-    public String getTypeString()
+    public String typeString()
     {
         if (this.type == Type.car)
         {
@@ -57,7 +59,7 @@ public class Vehicle
         }
     }
     
-    public Type getType()
+    public Type type()
     {
         return this.type;
     }
@@ -67,18 +69,18 @@ public class Vehicle
         return this.color;
     }
     
-    public int getLength()
+    public int length()
     {
         return this.length;
     }
     
     public int x()
     {
-        return this.position.x();
+        return this.x;
     }
     public int y()
     {
-        return this.position.y();
+        return this.y;
     }
     public Orientation orientation()
     {
@@ -90,9 +92,9 @@ public class Vehicle
     {
         if (orientation == Orientation.horizontal)
         {
-            if (position.x() > 0)
+            if (x > 0)
             {
-                position.x(position.x() - 1);
+                x--;
                 return true;
             }
             else
@@ -111,9 +113,9 @@ public class Vehicle
     {
         if (orientation == Orientation.horizontal)
         {
-            if (position.x() + length < 5)
+            if (x + length < 5)
             {
-                position.x(position.x() + 1);
+                x++;
                 return true;
             }
             else
@@ -132,9 +134,9 @@ public class Vehicle
     {
         if (orientation == Orientation.vertical)
         {
-            if (position.y() < 5)
+            if (y > 0)
             {
-                position.y(position.y() + 1);
+                y--;
                 return true;
             }
             else
@@ -153,9 +155,9 @@ public class Vehicle
     {
         if (orientation == Orientation.vertical)
         {
-            if (position.y() + length < 5)
+            if (y + length < 5)
             {
-                position.y(position.y() - 1);
+                y++;
                 return true;
             }
             else
