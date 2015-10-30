@@ -12,7 +12,6 @@
 package rushhour;
 
 import java.awt.Color;
-import javax.swing.JLabel;
 public class RushHour
 {
 
@@ -31,9 +30,7 @@ public class RushHour
             }
         });
         
-        JLabel grid = (JLabel)board.getComponentWithName("Grid00");
-        
-        Vehicle vehicle = new Vehicle(Vehicle.Type.truck, Color.yellow, 0, 0, Vehicle.Orientation.horizontal);
+        Vehicle vehicle = new Vehicle(Vehicle.Type.car, Color.red, 1, 2, Vehicle.Orientation.horizontal);
         
         board.drawOneVehicle(vehicle);
         vehicle.right();
