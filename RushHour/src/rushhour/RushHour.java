@@ -19,25 +19,25 @@ public class RushHour
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args)
+    public static void main(String[] args) throws InvalidMovementException
     {
         final GameBoard board = new GameBoard();
         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                board.setVisible(true);
             }
         });
         
-        // TODO code application logic here
-        
         JLabel grid = (JLabel)board.getComponentWithName("Grid00");
-        grid.setBackground(Color.blue);
         
-        grid.setText("Hello World!");
+        Vehicle vehicle = new Vehicle(Vehicle.Type.truck, Color.yellow, 0, 0, Vehicle.Orientation.horizontal);
+        
+        board.drawOneVehicle(vehicle);
+        vehicle.right();
+        board.drawOneVehicle(vehicle);
+        
     }
-    
-    
-
 }

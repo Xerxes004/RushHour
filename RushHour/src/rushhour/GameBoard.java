@@ -20,10 +20,15 @@ public class GameBoard extends javax.swing.JFrame {
         initComponents();
         
         grids = new HashMap<>();
+        vehicles = new Vehicle[0];
         
         // all components in GridPanel are JLabels
+        defaultGrid = (JLabel)GridPanel.getComponent(0);
+        
         for (Component g : GridPanel.getComponents())
         {
+            
+            
             JLabel grid = (JLabel)g;
             
             if (grid != null)
@@ -38,9 +43,93 @@ public class GameBoard extends javax.swing.JFrame {
         }
     }
     
-    private HashMap<String, Component> grids;
+    private final JLabel defaultGrid;
     
-    //public bool moveVehicle
+    private HashMap<String, Component> grids;
+    private Vehicle vehicles[];
+    
+    
+    // TODO: add error checking code
+    public void addVehicle(Vehicle newVehicle)
+    {
+        Vehicle temp[] = vehicles;
+        Vehicle newVehiclesArray[] = new Vehicle[vehicles.length + 1];
+        
+        System.arraycopy(temp, 0, newVehiclesArray, 0, temp.length);
+        newVehiclesArray[newVehiclesArray.length - 1] = newVehicle;
+        
+        vehicles = newVehiclesArray;
+        
+        this.drawAllVehicles();
+    }
+    
+    private void redrawBoard()
+    {
+        for (Component comp : GridPanel.getComponents())
+        {
+            JLabel grid = (JLabel)comp;
+            //grid.setText("hello");
+            grid.setBackground(defaultGrid.getBackground());
+        }
+    }
+    
+    private void drawAllVehicles()
+    {
+        redrawBoard();
+        for (Vehicle v : vehicles)
+        {
+            drawVehicle(v);
+        }
+    }
+    
+    public void drawOneVehicle(Vehicle vehicle)
+    {
+        redrawBoard();
+        drawVehicle(vehicle);
+    }
+    
+    private void drawVehicle(Vehicle vehicle)
+    {
+        String front = "Grid" + vehicle.x() + vehicle.y();
+        
+        Vehicle.Type type = vehicle.getType();
+        Vehicle.Orientation orientation = vehicle.orientation();
+        
+        int offset = (type == Vehicle.Type.car ? 1 : 2);
+           
+        String back = "";
+        
+        if (orientation == Vehicle.Orientation.horizontal)
+        {
+            back = "Grid" + (vehicle.x() + offset) + vehicle.y();
+        }
+        else
+        {
+            back = "Grid" + vehicle.x() + (vehicle.y() - offset);
+        }
+        
+        JLabel frontGrid = (JLabel)grids.get(front);
+        frontGrid.setText("front");
+        frontGrid.setBackground(vehicle.color());
+        
+        JLabel backGrid = (JLabel)grids.get(back);
+        backGrid.setText("back");
+        backGrid.setBackground(vehicle.color());
+        
+        if (type == Vehicle.Type.truck)
+        {
+            if (orientation == Vehicle.Orientation.horizontal)
+            {
+                String middle = "Grid" + (vehicle.x() + 1) + vehicle.y();
+                JLabel middleGrid = (JLabel)grids.get(middle);
+                middleGrid.setText("middle");
+                middleGrid.setBackground(vehicle.color());
+                
+            }
+            
+        }
+    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,7 +138,8 @@ public class GameBoard extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         GridPanel = new javax.swing.JPanel();
         Grid02 = new javax.swing.JLabel();
@@ -90,6 +180,7 @@ public class GameBoard extends javax.swing.JFrame {
         Grid13 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        ControlPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -99,289 +190,325 @@ public class GameBoard extends javax.swing.JFrame {
 
         Grid02.setBackground(new java.awt.Color(255, 255, 255));
         Grid02.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid02.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid02.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid02.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid02.setName("Grid02"); // NOI18N
+        Grid02.setName("Grid25"); // NOI18N
         Grid02.setOpaque(true);
         Grid02.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid55.setBackground(new java.awt.Color(255, 255, 255));
         Grid55.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid55.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid55.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid55.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid55.setName("Grid55"); // NOI18N
+        Grid55.setName("Grid50"); // NOI18N
         Grid55.setOpaque(true);
         Grid55.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid14.setBackground(new java.awt.Color(255, 255, 255));
         Grid14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid14.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid14.setName("Grid14"); // NOI18N
+        Grid14.setName("Grid44"); // NOI18N
         Grid14.setOpaque(true);
         Grid14.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid00.setBackground(new java.awt.Color(255, 255, 255));
         Grid00.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid00.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid00.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid00.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid00.setName("Grid00"); // NOI18N
+        Grid00.setName("Grid05"); // NOI18N
         Grid00.setOpaque(true);
         Grid00.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid50.setBackground(new java.awt.Color(255, 255, 255));
         Grid50.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid50.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid50.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid50.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid50.setName("Grid50"); // NOI18N
+        Grid50.setName("Grid00"); // NOI18N
         Grid50.setOpaque(true);
         Grid50.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid30.setBackground(new java.awt.Color(255, 255, 255));
         Grid30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid30.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid30.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid30.setName("Grid30"); // NOI18N
+        Grid30.setName("Grid02"); // NOI18N
         Grid30.setOpaque(true);
         Grid30.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid31.setBackground(new java.awt.Color(255, 255, 255));
         Grid31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid31.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid31.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid31.setName("Grid31"); // NOI18N
+        Grid31.setName("Grid12"); // NOI18N
         Grid31.setOpaque(true);
         Grid31.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid05.setBackground(new java.awt.Color(255, 255, 255));
         Grid05.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid05.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid05.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid05.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid05.setName("Grid05"); // NOI18N
+        Grid05.setName("Grid55"); // NOI18N
         Grid05.setOpaque(true);
         Grid05.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid20.setBackground(new java.awt.Color(255, 255, 255));
         Grid20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid20.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid20.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid20.setName("Grid20"); // NOI18N
+        Grid20.setName("Grid03"); // NOI18N
         Grid20.setOpaque(true);
         Grid20.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid42.setBackground(new java.awt.Color(255, 255, 255));
         Grid42.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid42.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid42.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid42.setName("Grid42"); // NOI18N
+        Grid42.setName("Grid21"); // NOI18N
         Grid42.setOpaque(true);
         Grid42.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid43.setBackground(new java.awt.Color(255, 255, 255));
         Grid43.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid43.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid43.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid43.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid43.setName("Grid43"); // NOI18N
+        Grid43.setName("Grid31"); // NOI18N
         Grid43.setOpaque(true);
         Grid43.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid11.setBackground(new java.awt.Color(255, 255, 255));
         Grid11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid11.setName("Grid11"); // NOI18N
+        Grid11.setName("Grid14"); // NOI18N
         Grid11.setOpaque(true);
         Grid11.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid35.setBackground(new java.awt.Color(255, 255, 255));
         Grid35.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid35.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid35.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid35.setName("Grid35"); // NOI18N
+        Grid35.setName("Grid52"); // NOI18N
         Grid35.setOpaque(true);
         Grid35.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid41.setBackground(new java.awt.Color(255, 255, 255));
         Grid41.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid41.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid41.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid41.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid41.setName("Grid41"); // NOI18N
+        Grid41.setName("Grid11"); // NOI18N
         Grid41.setOpaque(true);
         Grid41.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid03.setBackground(new java.awt.Color(255, 255, 255));
         Grid03.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid03.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid03.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid03.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid03.setName("Grid03"); // NOI18N
+        Grid03.setName("Grid35"); // NOI18N
         Grid03.setOpaque(true);
         Grid03.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid10.setBackground(new java.awt.Color(255, 255, 255));
         Grid10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid10.setName("Grid10"); // NOI18N
+        Grid10.setName("Grid04"); // NOI18N
         Grid10.setOpaque(true);
         Grid10.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid23.setBackground(new java.awt.Color(255, 255, 255));
         Grid23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid23.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid23.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid23.setName("Grid23"); // NOI18N
+        Grid23.setName("Grid33"); // NOI18N
         Grid23.setOpaque(true);
         Grid23.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid40.setBackground(new java.awt.Color(255, 255, 255));
         Grid40.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid40.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid40.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid40.setName("Grid40"); // NOI18N
+        Grid40.setName("Grid01"); // NOI18N
         Grid40.setOpaque(true);
         Grid40.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid33.setBackground(new java.awt.Color(255, 255, 255));
         Grid33.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid33.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid33.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid33.setName("Grid33"); // NOI18N
+        Grid33.setName("Grid32"); // NOI18N
         Grid33.setOpaque(true);
         Grid33.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid25.setBackground(new java.awt.Color(255, 255, 255));
         Grid25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid25.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid25.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid25.setName("Grid25"); // NOI18N
+        Grid25.setName("Grid53"); // NOI18N
         Grid25.setOpaque(true);
         Grid25.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid01.setBackground(new java.awt.Color(255, 255, 255));
         Grid01.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid01.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid01.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid01.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid01.setName("Grid01"); // NOI18N
+        Grid01.setName("Grid15"); // NOI18N
         Grid01.setOpaque(true);
         Grid01.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid54.setBackground(new java.awt.Color(255, 255, 255));
         Grid54.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid54.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid54.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid54.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid54.setName("Grid54"); // NOI18N
+        Grid54.setName("Grid40"); // NOI18N
         Grid54.setOpaque(true);
         Grid54.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid32.setBackground(new java.awt.Color(255, 255, 255));
         Grid32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid32.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid32.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid32.setName("Grid32"); // NOI18N
+        Grid32.setName("Grid22"); // NOI18N
         Grid32.setOpaque(true);
         Grid32.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid52.setBackground(new java.awt.Color(255, 255, 255));
         Grid52.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid52.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid52.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid52.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid52.setName("Grid52"); // NOI18N
+        Grid52.setName("Grid20"); // NOI18N
         Grid52.setOpaque(true);
         Grid52.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid04.setBackground(new java.awt.Color(255, 255, 255));
         Grid04.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid04.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid04.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid04.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid04.setName("Grid04"); // NOI18N
+        Grid04.setName("Grid45"); // NOI18N
         Grid04.setOpaque(true);
         Grid04.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid45.setBackground(new java.awt.Color(255, 255, 255));
         Grid45.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid45.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid45.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid45.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid45.setName("Grid45"); // NOI18N
+        Grid45.setName("Grid51"); // NOI18N
         Grid45.setOpaque(true);
         Grid45.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid53.setBackground(new java.awt.Color(255, 255, 255));
         Grid53.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid53.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid53.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid53.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid53.setName("Grid53"); // NOI18N
+        Grid53.setName("Grid30"); // NOI18N
         Grid53.setOpaque(true);
         Grid53.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid51.setBackground(new java.awt.Color(255, 255, 255));
         Grid51.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid51.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid51.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid51.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid51.setName("Grid51"); // NOI18N
+        Grid51.setName("Grid10"); // NOI18N
         Grid51.setOpaque(true);
         Grid51.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid12.setBackground(new java.awt.Color(255, 255, 255));
         Grid12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid12.setName("Grid12"); // NOI18N
+        Grid12.setName("Grid24"); // NOI18N
         Grid12.setOpaque(true);
         Grid12.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid24.setBackground(new java.awt.Color(255, 255, 255));
         Grid24.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid24.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid24.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid24.setName("Grid24"); // NOI18N
+        Grid24.setName("Grid43"); // NOI18N
         Grid24.setOpaque(true);
         Grid24.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid34.setBackground(new java.awt.Color(255, 255, 255));
         Grid34.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid34.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid34.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid34.setName("Grid34"); // NOI18N
+        Grid34.setName("Grid42"); // NOI18N
         Grid34.setOpaque(true);
         Grid34.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid21.setBackground(new java.awt.Color(255, 255, 255));
         Grid21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid21.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid21.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid21.setName("Grid21"); // NOI18N
+        Grid21.setName("Grid13"); // NOI18N
         Grid21.setOpaque(true);
         Grid21.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid15.setBackground(new java.awt.Color(255, 255, 255));
         Grid15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid15.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid15.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid15.setName("Grid15"); // NOI18N
+        Grid15.setName("Grid54"); // NOI18N
         Grid15.setOpaque(true);
         Grid15.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid22.setBackground(new java.awt.Color(255, 255, 255));
         Grid22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid22.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid22.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid22.setName("Grid22"); // NOI18N
+        Grid22.setName("Grid23"); // NOI18N
         Grid22.setOpaque(true);
         Grid22.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid44.setBackground(new java.awt.Color(255, 255, 255));
         Grid44.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid44.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid44.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid44.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid44.setName("Grid44"); // NOI18N
+        Grid44.setName("Grid41"); // NOI18N
         Grid44.setOpaque(true);
         Grid44.setPreferredSize(new java.awt.Dimension(80, 80));
 
         Grid13.setBackground(new java.awt.Color(255, 255, 255));
         Grid13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Grid13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Grid13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Grid13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Grid13.setName("Grid13"); // NOI18N
+        Grid13.setName("Grid34"); // NOI18N
         Grid13.setOpaque(true);
         Grid13.setPreferredSize(new java.awt.Dimension(80, 80));
 
@@ -527,12 +654,25 @@ public class GameBoard extends javax.swing.JFrame {
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
 
+        javax.swing.GroupLayout ControlPanelLayout = new javax.swing.GroupLayout(ControlPanel);
+        ControlPanel.setLayout(ControlPanelLayout);
+        ControlPanelLayout.setHorizontalGroup(
+            ControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 268, Short.MAX_VALUE)
+        );
+        ControlPanelLayout.setVerticalGroup(
+            ControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(280, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(ControlPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(GridPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -551,7 +691,8 @@ public class GameBoard extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(GridPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jSeparator1))))
+                            .addComponent(jSeparator1)
+                            .addComponent(ControlPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -606,6 +747,7 @@ public class GameBoard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel ControlPanel;
     private javax.swing.JLabel Grid00;
     private javax.swing.JLabel Grid01;
     private javax.swing.JLabel Grid02;
