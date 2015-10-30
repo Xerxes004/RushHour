@@ -17,11 +17,6 @@ public class Vehicle
         
         this.colorString = color;
         
-        this.possibleColors = new String[]
-        {
-            "red","lime","purple","orange","blue","yellow","lightblue","aqua"
-        };
-        
         this.colorMap = new HashMap<>();
         
         this.colorMap.put("red", Color.red);
@@ -50,7 +45,6 @@ public class Vehicle
     final private Type type;
     final private Color color;
     final private String colorString;
-    final private String[] possibleColors;
     final private HashMap<String, Color> colorMap;
     final private int length;
     final private Orientation orientation;
@@ -71,7 +65,11 @@ public class Vehicle
     {
         return this.color;
     }
-
+    public String colorString()
+    {
+        return this.colorString;
+    }
+    
     public int length()
     {
         return this.length;
