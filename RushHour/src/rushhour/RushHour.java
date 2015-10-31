@@ -13,6 +13,8 @@
 package rushhour;
 
 import java.awt.Color;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.LinkedList;
@@ -21,17 +23,24 @@ import java.util.Scanner;
 
 public class RushHour
 {
-    private static int numCars;
-    private static ArrayList<Vehicle> vehicles;
+    private int numCars;
+    private ArrayList<Vehicle> vehicles;
+    
+    public RushHour()
+    {
+        this.vehicles = new ArrayList<>();
+        this.numCars = 0;
+    }
     
     /**
      * @param args the command line arguments
      * @throws rushhour.InvalidMovementException
      */
     public static void main(String[] args)
-        throws InvalidMovementException
+        throws InvalidMovementException, VehicleConstructorError, FileNotFoundException
     {
         final GameBoard board = new GameBoard();
+        final RushHour game = new RushHour();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable()
@@ -43,23 +52,12 @@ public class RushHour
             }
         });
 
-        Vehicle red = new Vehicle(Vehicle.Type.car, "red", 1, 2, Vehicle.Orientation.horizontal);
-        Vehicle lime = new Vehicle(Vehicle.Type.car, "lime", 0, 0, Vehicle.Orientation.horizontal);
-        Vehicle purple = new Vehicle(Vehicle.Type.truck, "purple", 0, 1, Vehicle.Orientation.vertical);
-        Vehicle orange = new Vehicle(Vehicle.Type.car, "orange", 0, 4, Vehicle.Orientation.vertical);
-        Vehicle blue = new Vehicle(Vehicle.Type.truck, "blue", 3, 1, Vehicle.Orientation.vertical);
-        Vehicle yellow = new Vehicle(Vehicle.Type.truck, "yellow", 5, 0, Vehicle.Orientation.vertical);
-        Vehicle lightBlue = new Vehicle(Vehicle.Type.car, "lightblue", 4, 4, Vehicle.Orientation.horizontal);
-        Vehicle aqua = new Vehicle(Vehicle.Type.truck, "aqua", 2, 5, Vehicle.Orientation.horizontal);
+        game.parseInput("game2.dat");
 
-        board.addVehicle(red);
-        board.addVehicle(lime);
-        board.addVehicle(purple);
-        board.addVehicle(orange);
-        board.addVehicle(blue);
-        board.addVehicle(yellow);
-        board.addVehicle(lightBlue);
-        board.addVehicle(aqua);
+        for (Vehicle v : game.getVehicles())
+        {
+            board.addVehicle(v);
+        }
         
         //This hashtable will use the board, in the form of a 36 cahracter
         //string, as the key and has a string array the first item is the color 
@@ -68,7 +66,7 @@ public class RushHour
         String[] items = new String[2];
         items[0] = null;
         items[1] = "gray";
-        Character[][] boardArray;
+        Character[][] boardArray = new Character[0][0];
         String boardInString = "";
         
         nodes.put(boardInString, items);
@@ -77,9 +75,15 @@ public class RushHour
         nodesToSearch.add(boardArray);
     }
     
-    public void parseInput(String fileName)
+    public ArrayList<Vehicle> getVehicles()
     {
-        Scanner scan = new Scanner(fileName);
+        return this.vehicles;
+    }
+
+    public void parseInput(String fileName)
+        throws VehicleConstructorError, FileNotFoundException
+    {
+        Scanner scan = new Scanner(new File(fileName));
         if (scan.hasNextInt())
         {
             this.numCars = scan.nextInt();
@@ -87,41 +91,41 @@ public class RushHour
         for (int i = 0; i < numCars; i++)
         {
             String type = "";
-            
-            if (scan.hasNextLine())
+
+            if (scan.hasNext())
             {
-                type = scan.nextLine();
+                type = scan.next();
             }
-            
+
             String color = "";
-            
-            if (scan.hasNextLine())
+
+            if (scan.hasNext())
             {
-                color = scan.nextLine();
+                color = scan.next();
             }
-            
-            String orientation = "";
-            
-            if (scan.hasNextLine())
+
+                String orientation = "";
+
+            if (scan.hasNext())
             {
-                orientation = scan.nextLine();
+                orientation = scan.next();
             }
-            
+
             int y = 0;
-            
+
             if (scan.hasNextInt())
             {
                 y = scan.nextInt() - 1;
             }
-            
+
             int x = 0;
-            
+
             if (scan.hasNextInt())
             {
                 x = scan.nextInt() - 1;
             }
-            
-            // TODO add vehicles to internal variable
+
+            this.vehicles.add(new Vehicle(type, color, x, y, orientation));
         }
     }
     

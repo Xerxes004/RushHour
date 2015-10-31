@@ -6,16 +6,17 @@ import java.util.HashMap;
 
 public class Vehicle
 {
-
-    public Vehicle(Type type, String color, int x, int y,
-                   Orientation orientation)
+    public Vehicle(String type, String color, int x, int y,
+                   String orientation)
         throws VehicleConstructorError
     {
-        this.type = type;
+        this.type = type.equals("car") ? Type.car : Type.truck;
         this.x = x;
         this.y = y;
-        this.orientation = orientation;
-        this.length = (type == Type.car) ? 2 : 3;
+        this.orientation = orientation.equals("h") ?
+             Orientation.horizontal :
+             Orientation.vertical;
+        this.length = (this.type == Type.car) ? 2 : 3;
 
         this.colorString = color;
 
@@ -23,12 +24,17 @@ public class Vehicle
 
         this.colorMap.put("red", Color.red);
         this.colorMap.put("lime", Color.decode("0x66FF33"));
-        this.colorMap.put("purple", Color.decode("0xCC00CC"));
+        this.colorMap.put("purple", Color.decode("0x9900CC"));
         this.colorMap.put("orange", Color.orange);
         this.colorMap.put("blue", Color.blue);
         this.colorMap.put("yellow", Color.yellow);
         this.colorMap.put("lightblue", Color.decode("0x66CCFF"));
         this.colorMap.put("aqua", Color.cyan);
+        this.colorMap.put("violet", Color.decode("0xCC00CC"));
+        this.colorMap.put("pink", Color.decode("0xFF66CC"));
+        this.colorMap.put("black", Color.black);
+        this.colorMap.put("camo", Color.decode("0x996633"));
+        this.colorMap.put("green", Color.green);
 
         this.color = this.colorMap.get(color);
         if (this.color == null)
@@ -39,14 +45,12 @@ public class Vehicle
 
     public enum Type
     {
-
         car,
         truck
     }
 
     public enum Orientation
     {
-
         horizontal,
         vertical
     }
@@ -62,7 +66,9 @@ public class Vehicle
 
     public String typeString()
     {
-        return (this.type == Type.car) ? "car" : "truck";
+        return (this.type == Type.car) ?
+             "car" :
+             "truck";
     }
 
     public Type type()
