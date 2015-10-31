@@ -47,7 +47,7 @@ public class RushHour
         {
             @Override
             public void run()
-            {
+            {   
                 board.setVisible(true);
             }
         });
@@ -66,7 +66,7 @@ public class RushHour
         String[] items = new String[2];
         items[0] = null;
         items[1] = "gray";
-        Character[][] boardArray = new Character[0][0];
+        Character[][] boardArray = new Character[6][6];
         String boardInString = "";
         
         nodes.put(boardInString, items);

@@ -88,14 +88,14 @@ public class GameBoard
     {
         String front = "Grid" + vehicle.x() + vehicle.y();
 
-        Vehicle.Type type = vehicle.type();
-        Vehicle.Orientation orientation = vehicle.orientation();
+        String type = vehicle.type();
+        String orientation = vehicle.orientation();
 
-        int offset = (type == Vehicle.Type.car ? 1 : 2);
+        int offset = (type.equals("car") ? 1 : 2);
 
         String back = "";
 
-        if (orientation == Vehicle.Orientation.horizontal)
+        if (orientation.equals("h"))
         {
             back = "Grid" + (vehicle.x() + offset) + vehicle.y();
         }
@@ -110,19 +110,18 @@ public class GameBoard
         JLabel backGrid = (JLabel) grids.get(back);
         backGrid.setBackground(vehicle.color());
 
-        if (type == Vehicle.Type.truck)
+        if (type.equals("truck"))
         {
             String middle = "";
-            if (orientation == Vehicle.Orientation.horizontal)
+            if (orientation.equals("h"))
             {
                 middle = "Grid" + (vehicle.x() + 1) + vehicle.y();
-                
-
             }
             else
             {
                 middle = "Grid" + vehicle.x() + (vehicle.y() + 1);
             }
+            
             JLabel middleGrid = (JLabel) grids.get(middle);
             middleGrid.setBackground(vehicle.color());
 

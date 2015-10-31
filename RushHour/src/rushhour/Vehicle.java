@@ -6,17 +6,16 @@ import java.util.HashMap;
 
 public class Vehicle
 {
-    public Vehicle(String type, String color, int x, int y,
-                   String orientation)
+    public Vehicle(String type, String color, int x, int y, String orientation)
         throws VehicleConstructorError
     {
-        this.type = type.equals("car") ? Type.car : Type.truck;
+        this.type = type;
         this.x = x;
         this.y = y;
-        this.orientation = orientation.equals("h") ?
-             Orientation.horizontal :
-             Orientation.vertical;
-        this.length = (this.type == Type.car) ? 2 : 3;
+
+        this.orientation = orientation;
+
+        this.length = (this.type.equals("car")) ? 2 : 3;
 
         this.colorString = color;
 
@@ -37,41 +36,23 @@ public class Vehicle
         this.colorMap.put("green", Color.decode("0x009933"));
 
         this.color = this.colorMap.get(color);
+
         if (this.color == null)
         {
             throw new VehicleConstructorError(color + " is not a valid color!");
         }
     }
 
-    public enum Type
-    {
-        car,
-        truck
-    }
-
-    public enum Orientation
-    {
-        horizontal,
-        vertical
-    }
-
-    final private Type type;
+    final private String type;
     final private Color color;
     final private String colorString;
     final private HashMap<String, Color> colorMap;
     final private int length;
-    final private Orientation orientation;
+    final private String orientation;
     private int x;
     private int y;
 
-    public String typeString()
-    {
-        return (this.type == Type.car) ?
-             "car" :
-             "truck";
-    }
-
-    public Type type()
+    public String type()
     {
         return this.type;
     }
@@ -100,8 +81,8 @@ public class Vehicle
     {
         return this.y;
     }
-
-    public Orientation orientation()
+    
+    public String orientation()
     {
         return this.orientation;
     }
@@ -109,7 +90,7 @@ public class Vehicle
     public boolean left()
         throws InvalidMovementException
     {
-        if (orientation == Orientation.horizontal)
+        if (orientation.equals("h"))
         {
             if (x > 0)
             {
@@ -145,7 +126,7 @@ public class Vehicle
     public boolean right()
         throws InvalidMovementException
     {
-        if (orientation == Orientation.horizontal)
+        if (orientation.equals("h"))
         {
             if (x + length < 5)
             {
@@ -181,7 +162,7 @@ public class Vehicle
     public boolean up()
         throws InvalidMovementException
     {
-        if (orientation == Orientation.vertical)
+        if (orientation.equals("v"))
         {
             if (y > 0)
             {
@@ -217,7 +198,7 @@ public class Vehicle
     public boolean down()
         throws InvalidMovementException
     {
-        if (orientation == Orientation.vertical)
+        if (orientation.equals("v"))
         {
             if (y + length < 5)
             {
