@@ -66,15 +66,36 @@ public class RushHour
         // of the node and the second is the parent node
         Hashtable <String, String[]> nodes = new Hashtable();
         String[] items = new String[2];
+        //Set the first node's parent to null
         items[0] = null;
+        //Set its color to gray
         items[1] = "gray";
+        //This is the representation of the game board
         Character[][] boardArray;
+        //This will hold the converted board
         String boardInString = "";
         
+        //Put the first node in the hashtable
         nodes.put(boardInString, items);
         
+        // This is the queue we will use to do the breath first search
         Queue<Character[][]> nodesToSearch = new LinkedList();
+        //Put the first node on the queue
         nodesToSearch.add(boardArray);
+        
+        //This loop will do the search
+        while(!nodesToSearch.isEmpty()) {
+            boardArray = nodesToSearch.poll();
+            
+            for(int i = 0; i < 6; i++){
+                for(int j = 0; j < 6; j++){
+                    Character arrayItem = boardArray[i][j];
+                    if(arrayItem == boardArray[i][j+1]){
+                        
+                    }
+                }
+            }
+        }
     }
     
     public void parseInput(String fileName)
