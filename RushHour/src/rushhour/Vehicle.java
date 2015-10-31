@@ -34,7 +34,7 @@ public class Vehicle
         this.colorMap.put("pink", Color.decode("0xFF66CC"));
         this.colorMap.put("black", Color.black);
         this.colorMap.put("camo", Color.decode("0x996633"));
-        this.colorMap.put("green", Color.green);
+        this.colorMap.put("green", Color.decode("0x009933"));
 
         this.color = this.colorMap.get(color);
         if (this.color == null)
