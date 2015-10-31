@@ -14,6 +14,9 @@ package rushhour;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class RushHour
@@ -58,6 +61,20 @@ public class RushHour
         board.addVehicle(lightBlue);
         board.addVehicle(aqua);
         
+        //This hashtable will use the board, in the form of a 36 cahracter
+        //string, as the key and has a string array the first item is the color 
+        // of the node and the second is the parent node
+        Hashtable <String, String[]> nodes = new Hashtable();
+        String[] items = new String[2];
+        items[0] = null;
+        items[1] = "gray";
+        Character[][] boardArray;
+        String boardInString = "";
+        
+        nodes.put(boardInString, items);
+        
+        Queue<Character[][]> nodesToSearch = new LinkedList();
+        nodesToSearch.add(boardArray);
     }
     
     public void parseInput(String fileName)
@@ -106,5 +123,17 @@ public class RushHour
             
             // TODO add vehicles to internal variable
         }
+    }
+    
+    public String changeArrayToString(Character[][] board) {
+        
+        String stringBoard = "";
+        for(int i = 0; i < 6; i++){
+            for(int j = 0; j < 6; j++){
+                stringBoard += board[i][j];
+            }
+        }
+        
+        return stringBoard;
     }
 }
