@@ -50,8 +50,8 @@ public class GameBoard
 
     private final Color defaultColor;
 
-    private HashMap<String, Component> grids;
-    private ArrayList<Vehicle> vehicles;
+    final private HashMap<String, Component> grids;
+    final private ArrayList<Vehicle> vehicles;
 
     public void addVehicle(Vehicle newVehicle)
     {
@@ -706,7 +706,7 @@ public class GameBoard
                 .addContainerGap())
         );
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("EXIT");
         jLabel1.setFocusable(false);
         jLabel1.setName(""); // NOI18N
@@ -719,7 +719,7 @@ public class GameBoard
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(GridPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -730,7 +730,7 @@ public class GameBoard
                         .addContainerGap()
                         .addComponent(GridPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(227, 227, 227)
+                        .addGap(217, 217, 217)
                         .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
