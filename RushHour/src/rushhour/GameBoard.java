@@ -89,6 +89,11 @@ public class GameBoard
             drawVehicle(v);
         }
     }
+    
+    public boolean moveVehicle(Move move) throws InvalidMovementException
+    {
+        return moveVehicle(move.color(), move.spaces(), move.direction());
+    }
 
     public boolean moveVehicle(String color, int moves, String direction)
         throws InvalidMovementException
@@ -103,7 +108,7 @@ public class GameBoard
         return true;
     }
 
-    public boolean moveVehicle(String color, String direction)
+    private boolean moveVehicle(String color, String direction)
         throws InvalidMovementException
     {
         boolean succeeded = false;
@@ -241,7 +246,7 @@ public class GameBoard
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        GridPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Rush Hour!", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Anonymous Pro", 0, 14))); // NOI18N
+        GridPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Rush Hour!", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Avenir Next", 0, 14))); // NOI18N
         GridPanel.setName("GridPanel"); // NOI18N
 
         Grid02.setBackground(new java.awt.Color(255, 255, 255));
@@ -706,7 +711,7 @@ public class GameBoard
                 .addContainerGap())
         );
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Avenir Next", 0, 36)); // NOI18N
         jLabel1.setText("EXIT");
         jLabel1.setFocusable(false);
         jLabel1.setName(""); // NOI18N
