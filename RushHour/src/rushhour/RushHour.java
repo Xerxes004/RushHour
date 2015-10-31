@@ -52,12 +52,21 @@ public class RushHour
             }
         });
 
-        game.parseInput("game2.dat");
+        game.parseInput("game1.dat");
 
         for (Vehicle v : game.getVehicles())
         {
             board.addVehicle(v);
         }
+        
+        board.moveVehicle("lightblue", 3, "l");
+        board.moveVehicle("yellow", 3, "d");
+        board.moveVehicle("lime", 1, "r");
+        board.moveVehicle("purple", 1, "u");
+        board.moveVehicle("orange", 1, "u");
+        board.moveVehicle("aqua", 2, "L");
+        board.moveVehicle("blue", 2, "D");
+        board.moveVehicle("red", 4, "R");
         
         //This hashtable will use the board, in the form of a 36 cahracter
         //string, as the key and has a string array the first item is the color 
@@ -79,6 +88,8 @@ public class RushHour
     {
         return this.vehicles;
     }
+    
+    
 
     public void parseInput(String fileName)
         throws VehicleConstructorError, FileNotFoundException
