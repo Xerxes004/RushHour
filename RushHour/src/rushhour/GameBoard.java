@@ -53,13 +53,33 @@ public class GameBoard
     private HashMap<String, Component> grids;
     private ArrayList<Vehicle> vehicles;
 
+    public enum Direction
+    {
+        up,
+        down,
+        left,
+        right
+    }
+
     public void addVehicle(Vehicle newVehicle)
     {
         vehicles.add(newVehicle);
         this.drawAllVehicles();
     }
+    
+    private Vehicle findVehicleByColor(String color)
+    {
+        for (Vehicle v : vehicles)
+        {
+            if (v.colorString().equals(color))
+            {
+                return v;
+            }
+        }
+        return null;
+    }
 
-    private void redrawBoard()
+    private void clearBoard()
     {
         for (Component comp : GridPanel.getComponents())
         {
@@ -71,16 +91,65 @@ public class GameBoard
 
     private void drawAllVehicles()
     {
-        redrawBoard();
+        clearBoard();
         for (Vehicle v : vehicles)
         {
             drawVehicle(v);
         }
     }
 
+    public boolean moveVehicle(String color, int moves, String direction)
+        throws InvalidMovementException
+    {
+        for (int i = 0; i < moves; i++)
+        {
+            if (!moveVehicle(color, direction))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean moveVehicle(String color, String direction)
+        throws InvalidMovementException
+    {
+        boolean succeeded = false;
+        
+        switch (direction)
+        {
+            case "u":
+            case "U":
+                succeeded = findVehicleByColor(color).up();
+                break;
+                
+            case "d":
+            case "D":
+                succeeded = findVehicleByColor(color).down();
+                break;
+                
+            case "l":
+            case "L":
+                succeeded = findVehicleByColor(color).left();
+                break;
+                
+            case "r":
+            case "R":
+                succeeded = findVehicleByColor(color).right();
+                break;
+                
+            default:
+                return false;
+        }
+        
+        drawAllVehicles();
+        
+        return succeeded;
+    }
+
     public void drawOneVehicle(Vehicle vehicle)
     {
-        redrawBoard();
+        clearBoard();
         drawVehicle(vehicle);
     }
 
@@ -121,7 +190,7 @@ public class GameBoard
             {
                 middle = "Grid" + vehicle.x() + (vehicle.y() + 1);
             }
-            
+
             JLabel middleGrid = (JLabel) grids.get(middle);
             middleGrid.setBackground(vehicle.color());
 
