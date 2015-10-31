@@ -18,6 +18,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.Queue;
 import java.util.Scanner;
 
@@ -68,7 +69,7 @@ public class RushHour
         board.moveVehicle("blue", 2, "D");
         board.moveVehicle("red", 4, "R");
         
-        //This hashtable will use the board, in the form of a 36 cahracter
+        //This hashtable will use the dynamic information, in the form of a
         //string, as the key and has a string array the first item is the color 
         // of the node and the second is the parent node
         Hashtable <String, String[]> nodes = new Hashtable();
@@ -77,18 +78,20 @@ public class RushHour
         items[0] = null;
         //Set its color to gray
         items[1] = "gray";
-
-        //This is the representation of the game board
-        Character[][] boardArray = new Character[6][6];
-        //This will hold the converted board
-
-        String boardInString = "";
         
-        //Put the first node in the hashtable
-        nodes.put(boardInString, items);
-        
+        //This is for easy of access
         ArrayList<Vehicle> dynamicVehicles = game.getVehicles();
         
+        Character[][] boardArray = new Character[6][6];
+        
+        //Put the dynamic info inot a string
+        String dynamicInfo = "";
+        for(int i = 0; i < game.numCars; i++){
+            dynamicInfo += dynamicVehicles.get(i).dynamicInfo();
+        }
+        //Put the first node in the hashtable
+        nodes.put(dynamicInfo, items);
+ 
         // This is the queue we will use to do the breath first search
         Queue<Character[][]> nodesToSearch = new LinkedList();
         //Put the first node on the queue
@@ -100,7 +103,30 @@ public class RushHour
             
             for(int i = 0; i < game.numCars; i++){
                 Vehicle currentCar = dynamicVehicles.get(i);
-                
+                String orient = currentCar.orientation();
+                Integer x;
+                Integer y;
+                if(orient.equals("h") ) {
+                    x = Integer.valueOf(dynamicInfo.substring(i, i + 1));
+                    y = currentCar.y();
+                    if((x != 0)&&(boardArray[y][x-1].equals('_'))){
+                        String check = dynamicInfo.substring(0, i) + 
+                                Integer.toString(x) + 
+                                dynamicInfo.substring(i+1, game.numCars);
+                        if(!nodes.containsKey(check)) {
+                            String[] data = new String[2];
+                            data[1] = dynamicInfo;
+                            data[2] = "gray";
+                            nodes.put(check, data);
+                            Character[][] changedArray = new Character[6][6];
+                            changedArray = boardArray;
+                            Character color = changedArray[y][x];
+                            changedArray[y][x+currentCar.length()-1] = '_';
+                            changedArray[y][x-1] = color;
+                            nodesToSearch.add(changedArray);
+                        }
+                    }
+                }
             }
         }
     }
