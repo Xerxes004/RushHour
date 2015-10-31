@@ -83,6 +83,22 @@ public class Vehicle
     {
         return this.orientation;
     }
+    
+    public String dynamicInfo()
+    {
+        String answer = "";
+            
+        if (this.orientation.equals("h"))
+        {
+            answer += this.x;
+        }
+        else
+        {
+            answer += this.y;
+        }
+        
+        return answer;
+    }
 
     /**
      * Move this vehicle to the left one space.
