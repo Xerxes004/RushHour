@@ -53,14 +53,6 @@ public class GameBoard
     private HashMap<String, Component> grids;
     private ArrayList<Vehicle> vehicles;
 
-    public enum Direction
-    {
-        up,
-        down,
-        left,
-        right
-    }
-
     public void addVehicle(Vehicle newVehicle)
     {
         vehicles.add(newVehicle);
