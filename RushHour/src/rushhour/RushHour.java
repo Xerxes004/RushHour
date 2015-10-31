@@ -12,7 +12,6 @@
 
 package rushhour;
 
-import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -26,11 +25,13 @@ public class RushHour
 {
     private int numCars;
     private ArrayList<Vehicle> vehicles;
+    private ArrayList<Move> lastMove;
     
     public RushHour()
     {
         this.vehicles = new ArrayList<>();
         this.numCars = 0;
+        this.lastMove = new ArrayList<>();
     }
     
     /**
@@ -60,14 +61,19 @@ public class RushHour
             board.addVehicle(v);
         }
         
-        board.moveVehicle("lightblue", 3, "l");
-        board.moveVehicle("yellow", 3, "d");
-        board.moveVehicle("lime", 1, "r");
-        board.moveVehicle("purple", 1, "u");
-        board.moveVehicle("orange", 1, "u");
-        board.moveVehicle("aqua", 2, "L");
-        board.moveVehicle("blue", 2, "D");
-        board.moveVehicle("red", 4, "R");
+        game.pushLastMove(new Move("lightblue", 3, "l"));
+        game.pushLastMove(new Move("yellow", 3, "d"));
+        game.pushLastMove(new Move("lime", 1, "r"));
+        game.pushLastMove(new Move("purple", 1, "u"));
+        game.pushLastMove(new Move("orange", 1, "u"));
+        game.pushLastMove(new Move("aqua", 2, "L"));
+        game.pushLastMove(new Move("blue", 2, "D"));
+        game.pushLastMove(new Move("red", 4, "R"));
+        
+        for (Move move : game.moves())
+        {
+            board.moveVehicle(move);
+        }
         
         //This hashtable will use the dynamic information, in the form of a
         //string, as the key and has a string array the first item is the color 
@@ -129,6 +135,16 @@ public class RushHour
                 }
             }
         }
+    }
+    
+    public void pushLastMove(Move move)
+    {
+        this.lastMove.add(0, move);
+    }
+    
+    public ArrayList<Move> moves()
+    {
+        return this.lastMove;
     }
     
     public ArrayList<Vehicle> getVehicles()
