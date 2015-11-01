@@ -398,14 +398,17 @@ public class RushHour
 
             int y;
             int x;
-            if(car.orientation().equals("h")) {
+
+            if (car.orientation().equals("h"))
+            {
                 y = car.y();
-                x = Integer.parseInt(dynam.substring(i, i+1));
-            } else {
-                y = Integer.parseInt(dynam.substring(i, i+1));
+                x = Integer.parseInt(dynam.substring(i, i + 1));
+            }
+            else
+            {
+                y = Integer.parseInt(dynam.substring(i, i + 1));
                 x = car.x();
             }
-
 
             board[y][x] = car.colorString().substring(0, 1);
 
