@@ -17,7 +17,6 @@ import javax.swing.JLabel;
 public class GameBoard
     extends javax.swing.JFrame
 {
-
     /**
      * Creates new form GameBoard
      */
@@ -52,6 +51,17 @@ public class GameBoard
 
     final private HashMap<String, Component> grids;
     final private ArrayList<Vehicle> vehicles;
+    
+    public String getDynamicString()
+    {
+        String dynamicInfo = "";
+        for (Vehicle v : vehicles)
+        {
+            dynamicInfo += v.dynamicInfo();
+        }
+        
+        return dynamicInfo;
+    }
 
     public void addVehicle(Vehicle newVehicle)
     {
