@@ -87,13 +87,19 @@ public class RushHour
         
         //This is for easy of access
         ArrayList<Vehicle> dynamicVehicles = game.getVehicles();
-        
+        //This is an array representation of the board with the first index being 
+        //the number of the row and the second being the number of the column
         Character[][] boardArray = new Character[6][6];
         
         //Put the dynamic info inot a string
         String dynamicInfo = "";
+        //This is to keep track of the red car
+        Integer redNum = 0;
         for(int i = 0; i < game.numCars; i++){
             dynamicInfo += dynamicVehicles.get(i).dynamicInfo();
+            if(dynamicVehicles.get(i).colorString() == "red") {
+                redNum = i;
+            }
         }
         //Put the first node in the hashtable
         nodes.put(dynamicInfo, items);
@@ -105,34 +111,135 @@ public class RushHour
         
         //This loop will do the search
         while(!nodesToSearch.isEmpty()) {
+            //Get node
             boardArray = nodesToSearch.poll();
-            
+            //Loop through all the cars to get all the possible moves
             for(int i = 0; i < game.numCars; i++){
                 Vehicle currentCar = dynamicVehicles.get(i);
                 String orient = currentCar.orientation();
                 Integer x;
                 Integer y;
+                //If the car is horizontal
                 if(orient.equals("h") ) {
+                    //Get the dynamic variable from the srting
                     x = Integer.valueOf(dynamicInfo.substring(i, i + 1));
                     y = currentCar.y();
+                    //If it is possible to move the car to the left
                     if((x != 0)&&(boardArray[y][x-1].equals('_'))){
+                        //Make dynamic string to match the move
                         String check = dynamicInfo.substring(0, i) + 
-                                Integer.toString(x) + 
+                                Integer.toString(x-1) + 
                                 dynamicInfo.substring(i+1, game.numCars);
+                        //See if this move has been done before
                         if(!nodes.containsKey(check)) {
+                            //data for the new node
                             String[] data = new String[2];
+                            //Its parent is the previous move
                             data[1] = dynamicInfo;
                             data[2] = "gray";
+                            //Put it in the hashtable
                             nodes.put(check, data);
+                            //New array for the queue
                             Character[][] changedArray = new Character[6][6];
                             changedArray = boardArray;
+                            //Perform the move in the new array
                             Character color = changedArray[y][x];
                             changedArray[y][x+currentCar.length()-1] = '_';
                             changedArray[y][x-1] = color;
+                            //Add array to the queue
+                            nodesToSearch.add(changedArray);
+                        }
+                    } 
+                    //See if the car can move right
+                    if ((x + currentCar.length()-1 < 5)&&
+                        (boardArray[y][x + currentCar.length()-1].equals('_'))){
+                        //Make dynamic string to match the move
+                        String check = dynamicInfo.substring(0, i) + 
+                                Integer.toString(x+1) + 
+                                dynamicInfo.substring(i+1, game.numCars);
+                        //See if this move has been done before
+                        if(!nodes.containsKey(check)) {
+                            //Data for the new node
+                            String[] data = new String[2];
+                            //Its parent is the previous move
+                            data[1] = dynamicInfo;
+                            data[2] = "gray";
+                            //Put it in the hashtable
+                            nodes.put(check, data);
+                            //New array for the queue
+                            Character[][] changedArray = new Character[6][6];
+                            changedArray = boardArray;
+                            //Perform the move in the new array
+                            Character color = changedArray[y][x];
+                            changedArray[y][x+currentCar.length()+1] = color;
+                            changedArray[y][x] = '_';
+                            //Add array to the queue
+                            nodesToSearch.add(changedArray);
+                        }
+                    }
+                //If the car is vertical
+                } else {
+                    x = currentCar.x();
+                    //Get the dynamic variable from the string
+                    y = Integer.valueOf(dynamicInfo.substring(i, i + 1));
+                    //See of the car can move up
+                    if((y != 0)&&(boardArray[y-1][x].equals('_'))){
+                        //Make dynamic string to match the move
+                        String check = dynamicInfo.substring(0, i) + 
+                                Integer.toString(y-1) + 
+                                dynamicInfo.substring(i+1, game.numCars);
+                        //See if this move has been done before
+                        if(!nodes.containsKey(check)) {
+                            //Data for the new move
+                            String[] data = new String[2];
+                            //Its parent is the previous move
+                            data[1] = dynamicInfo;
+                            data[2] = "gray";
+                            //Put it in the hashtable
+                            nodes.put(check, data);
+                            //New array for the queue
+                            Character[][] changedArray = new Character[6][6];
+                            changedArray = boardArray;
+                            //Perform the move in the new array
+                            Character color = changedArray[y][x];
+                            changedArray[y+currentCar.length()-1][x] = '_';
+                            changedArray[y-1][x] = color;
+                            //Add to the queue
+                            nodesToSearch.add(changedArray);
+                        }
+                    } 
+                    //See if a move down is possible
+                    if ((y + currentCar.length()-1 < 5)&&
+                        (boardArray[y + currentCar.length()-1][x].equals('_'))){
+                        //Make a dynamic string to match the move
+                        String check = dynamicInfo.substring(0, i) + 
+                                Integer.toString(y+1) + 
+                                dynamicInfo.substring(i+1, game.numCars);
+                        //See if the move has been done before
+                        if(!nodes.containsKey(check)) {
+                            //Data for the new move
+                            String[] data = new String[2];
+                            //Its parent is the previous move
+                            data[1] = dynamicInfo;
+                            data[2] = "gray";
+                            //Put it in the hash table
+                            nodes.put(check, data);
+                            //New array for the queue
+                            Character[][] changedArray = new Character[6][6];
+                            changedArray = boardArray;
+                            //Perfom the move in the new array
+                            Character color = changedArray[y][x];
+                            changedArray[y+currentCar.length()+1][x] = color;
+                            changedArray[y][x] = '_';
+                            //Add to the queue
                             nodesToSearch.add(changedArray);
                         }
                     }
                 }
+            }
+            //This will stop the loop is the red car gets to the exit point
+            if(dynamicVehicles.get(redNum).x() == 4) {
+                
             }
         }
     }
