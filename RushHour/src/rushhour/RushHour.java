@@ -15,7 +15,7 @@ package rushhour;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Queue;
@@ -78,7 +78,7 @@ public class RushHour
         //This hashtable will use the dynamic information, in the form of a
         //string, as the key and has a string array the first item is the color 
         // of the node and the second is the parent node
-        Hashtable <String, String> nodes = new Hashtable();
+        HashMap <String, String> nodes = new HashMap();
         //First moves parent is null
         String parent = null;
 
@@ -208,7 +208,28 @@ public class RushHour
             }
             
         }
+        //This will hold the total number of moves in the solution
+        int numMoves = 0;
+        //This will hold all the moves in the solution
+        ArrayList<String> allMoves = new ArrayList<>();
         if(solved) {
+            String nextMove = finalMove;
+            String prevMove = dynamicInfo;
+            while(!nextMove.equals(null)){
+                allMoves.add(nextMove);
+                nextMove = nodes.get(nextMove);
+            }
+            numMoves = allMoves.size();
+            while(!allMoves.isEmpty()){
+                nextMove = allMoves.remove(allMoves.size()-1);
+                for(int i = 0; i < nextMove.length(); i++){
+                    if(!nextMove.substring(i, i+1).equals(
+                            prevMove.substring(i, i+1))) {
+                        
+                    }
+                }
+                
+            }
             
         } else {
             
