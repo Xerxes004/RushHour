@@ -36,6 +36,8 @@ public class RushHour
     /**
      * @param args the command line arguments
      * @throws rushhour.InvalidMovementException
+     * @throws rushhour.VehicleConstructorError
+     * @throws java.io.FileNotFoundException
      */
     public static void main(String[] args)
         throws InvalidMovementException, VehicleConstructorError, FileNotFoundException
@@ -53,28 +55,18 @@ public class RushHour
             }
         });
 
-        game.parseInput("game1.dat");
+        game.parseInput("game36.dat");
 
         for (Vehicle v : game.getVehicles())
         {
             board.addVehicle(v);
         }
 
-        /*game.pushLastMove(new Move("lightblue", 3, "l"));
-        game.pushLastMove(new Move("yellow", 3, "d"));
-        game.pushLastMove(new Move("lime", 1, "r"));
-        game.pushLastMove(new Move("purple", 1, "u"));
-        game.pushLastMove(new Move("orange", 1, "u"));
-        game.pushLastMove(new Move("aqua", 2, "L"));
-        game.pushLastMove(new Move("blue", 2, "D"));
-        game.pushLastMove(new Move("red", 4, "R"));*/
-         
-         
         for (Move move : game.moves())
         {
             board.moveVehicle(move);
         }
-        
+
         //This hashMap will use the dynamic information, in the form of a
         //string, as the key and has a string array the first item is the color 
         // of the node and the second is the parent node
@@ -130,7 +122,7 @@ public class RushHour
             //Loop through all the cars to get all the possible moves
             for (int i = 0; i < game.numCars; i++)
             {
-                
+
                 Vehicle currentCar = dynamicVehicles.get(i);
                 String orient = currentCar.orientation();
                 int x;
@@ -160,14 +152,16 @@ public class RushHour
                                 parent = newDynam;
 
                                 //Put it in the hashtable
-                                nodes.put(check, new Move(parent, new Move(currentCar.colorString(), 1, "L"));
+                                nodes.put(check, new DynamicMove(
+                                    parent, new Move(
+                                        currentCar.colorString(), 1, "L")));
 
                                 //Add node to the queue
                                 nodesToSearch.add(check);
                             }
                         }
                     }
-                    
+
                     //See if the car can move right
                     if ((x + currentCar.length() - 1 < 5)
                         && (boardArray[y][x + currentCar.length()].equals("_")))
@@ -184,7 +178,8 @@ public class RushHour
                             parent = newDynam;
 
                             //Put it in the hashtable
-                            nodes.put(check, parent);
+                            nodes.put(check, new DynamicMove(parent,
+                                new Move(currentCar.colorString(), 1, "R")));
 
                             //Add node to the queue
                             nodesToSearch.add(check);
@@ -216,7 +211,8 @@ public class RushHour
                                 parent = newDynam;
 
                                 //Put it in the hashtable
-                                nodes.put(check, parent);
+                                nodes.put(check, new DynamicMove(parent,
+                                    new Move(currentCar.colorString(), 1, "U")));
 
                                 //Add to the queue
                                 nodesToSearch.add(check);
@@ -232,7 +228,7 @@ public class RushHour
                         String check = newDynam.substring(0, i)
                             + Integer.toString(y + 1)
                             + newDynam.substring(i + 1, game.numCars);
-                        
+
                         //See if the move has been done before
                         if (!nodes.containsKey(check))
                         {
@@ -240,14 +236,15 @@ public class RushHour
                             parent = newDynam;
 
                             //Put it in the hash table
-                            nodes.put(check, parent);
+                            nodes.put(check, new DynamicMove(parent,
+                                new Move(currentCar.colorString(), 1, "D")));
 
                             //Add to the queue
                             nodesToSearch.add(check);
                         }
                     }
                 }
-                
+
                 //This will stop the loop is the red car gets to the exit point
                 if (newDynam.substring(redNum, redNum + 1).equals("4"))
                 {
@@ -257,76 +254,27 @@ public class RushHour
                 }
             }
         }
-        
+
         //This will hold the total number of moves in the solution
         int numMoves = 0;
         //This will hold all the moves in the solution
         ArrayList<String> allMoves = new ArrayList<>();
-        
+
         if (solved)
         {
-            String nextMove = finalMove;
-            //This holds the previous
-            String prevMove = dynamicInfo;
-            //Add all the moves in the solution to the
+            String currentMove = finalMove;
             
-            while (nextMove != null)
+            while (nodes.get(currentMove).parent() != null)
             {
-                allMoves.add(nextMove);
-                nextMove = nodes.get(nextMove);
+                game.pushLastMove(nodes.get(currentMove).move());
+                currentMove = nodes.get(currentMove).parent();
             }
             
-            numMoves = allMoves.size();
-            
-            while (!allMoves.isEmpty())
+            for (Move move : game.moves())
             {
-                nextMove = allMoves.remove(allMoves.size() - 1);
-                for (int i = 0; i < nextMove.length(); i++)
-                {
-                    int next = Integer.parseInt(nextMove.substring(i, i + 1));
-                    int prev = Integer.parseInt(prevMove.substring(i, i + 1));
-                    Vehicle moved = dynamicVehicles.get(i);
-                    String dir = "";
-                    if (next < prev)
-                    {
-                        if (moved.orientation().equals("h"))
-                        {
-                            dir = "L";
-                        }
-                        else
-                        {
-                            dir = "U";
-                        }
-                        game.pushLastMove(new Move(moved.colorString(), 1, dir));
-
-                    }
-                    else if (next > prev)
-                    {
-                        if (moved.orientation().equals("v"))
-                        {
-                            dir = "D";
-                        }
-                        else
-                        {
-                            dir = "R";
-                        }
-                        game.pushLastMove(new Move(moved.colorString(), 1, dir));
-                    }
-                }
-
+                board.moveVehicle(move);
             }
-
         }
-        else
-        {
-
-        }
-
-        for (Move move : game.moves())
-        {
-            board.moveVehicle(move);
-        }
-
     }
 
     public void pushLastMove(Move move)

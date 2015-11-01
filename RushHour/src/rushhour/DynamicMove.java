@@ -21,7 +21,7 @@ public class DynamicMove
     private String dynamicString;
     private Move move;
     
-    public String dynamicString()
+    public String parent()
     {
         return this.dynamicString;
     }
