@@ -332,16 +332,25 @@ public class RushHour
         }
         for(int i = 0; i < this.numCars; i++){
             Vehicle car = this.vehicles.get(i);
-            board[car.y()][car.x()] = (char) i;
+            int y;
+            int x;
             if(car.orientation().equals("h")) {
-                board[car.y()][car.x()+1] = (char) i;
+                y = car.y();
+                x = Integer.parseInt(dynam.substring(i, i+1));
+            } else {
+                y = Integer.parseInt(dynam.substring(i, i+1));
+                x = car.x();
+            }
+            board[y][x] = (char) i;
+            if(car.orientation().equals("h")) {
+                board[y][x+1] = (char) i;
                 if(car.length() == 3) {
-                    board[car.y()][car.x()+2] = (char) i;
+                    board[y][x+2] = (char) i;
                 } 
             } else {
-                board[car.y()+1][car.x()] = (char) i;
+                board[y+1][x] = (char) i;
                 if(car.length() == 3) {
-                    board[car.y()+2][car.x()] = (char) i;
+                    board[y+2][x] = (char) i;
                 }
             }
         
