@@ -75,7 +75,7 @@ public class RushHour
             board.moveVehicle(move);
         }
         
-        //This hashtable will use the dynamic information, in the form of a
+        //This hashMap will use the dynamic information, in the form of a
         //string, as the key and has a string array the first item is the color 
         // of the node and the second is the parent node
         HashMap <String, String> nodes = new HashMap();
@@ -96,7 +96,7 @@ public class RushHour
                 redNum = i;
             }
         }
-        //Put the first node in the hashtable
+        //Put the first node in the hashmap
         nodes.put(dynamicInfo, parent);
  
         // This is the queue we will use to do the breath first search
@@ -111,7 +111,7 @@ public class RushHour
         //the number of the row and the second being the number of the column
         Character[][] boardArray = new Character[6][6];
         //This loop will do the search
-        while((!nodesToSearch.isEmpty())||(solved)) {
+        while((!nodesToSearch.isEmpty())||(!solved)) {
             //Get node
             String newDynam = nodesToSearch.poll();
             //Get array representation of the board
@@ -212,9 +212,13 @@ public class RushHour
         int numMoves = 0;
         //This will hold all the moves in the solution
         ArrayList<String> allMoves = new ArrayList<>();
+        
         if(solved) {
+            //This holds the next move in the solution
             String nextMove = finalMove;
+            //This holds the previous
             String prevMove = dynamicInfo;
+            //Add all the moves in the solution to the 
             while(!nextMove.equals(null)){
                 allMoves.add(nextMove);
                 nextMove = nodes.get(nextMove);
@@ -223,9 +227,25 @@ public class RushHour
             while(!allMoves.isEmpty()){
                 nextMove = allMoves.remove(allMoves.size()-1);
                 for(int i = 0; i < nextMove.length(); i++){
-                    if(!nextMove.substring(i, i+1).equals(
-                            prevMove.substring(i, i+1))) {
+                    int next = Integer.getInteger(nextMove.substring(i, i+1)); 
+                    int prev = Integer.getInteger(prevMove.substring(i, i+1));
+                    Vehicle moved = dynamicVehicles.get(i);
+                    String dir = "";
+                    if(next < prev) {
+                        if(moved.orientation().equals("h")){
+                            dir = "L";
+                        } else {
+                            dir = "U";
+                        }
+                        game.pushLastMove(new Move(moved.colorString(), 1, dir));
                         
+                    } else if (next > prev) {
+                        if(moved.orientation().equals("v")){
+                            dir = "R";
+                        } else {
+                            dir = "D";
+                        }
+                        game.pushLastMove(new Move(moved.colorString(), 1, dir));
                     }
                 }
                 
