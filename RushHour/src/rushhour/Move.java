@@ -23,6 +23,34 @@ public class Move
     private final int spaces;
     private final String direction;
     
+    public Move invert()
+    {
+        String oppositeDirection = "invalid";
+        
+        switch(this.direction)
+        {
+            case "u":
+            case "U":
+                oppositeDirection = "D";
+                break;
+            case "d":
+            case "D":
+                oppositeDirection = "U";
+                break;
+            case "l":
+            case "L":
+                oppositeDirection = "R";
+                break;
+            case "r":
+            case "R":
+                oppositeDirection = "L";
+                break;
+            default:
+                return null;
+        }
+        
+        return new Move (this.color, this.spaces, oppositeDirection);
+    }
     public String color()
     {
         return this.color;

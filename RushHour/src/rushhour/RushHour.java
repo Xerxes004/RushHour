@@ -16,22 +16,21 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Objects;
 import java.util.Queue;
 import java.util.Scanner;
 
 public class RushHour
 {
-    private int numCars;
-    private ArrayList<Vehicle> vehicles;
-    private ArrayList<Move> lastMove;
-
     public RushHour()
     {
-        this.vehicles = new ArrayList<>();
         this.numCars = 0;
+        this.vehicles = new ArrayList<>();
         this.lastMove = new ArrayList<>();
     }
+
+    private int numCars;
+    final private ArrayList<Vehicle> vehicles;
+    final private ArrayList<Move> lastMove;
 
     /**
      * @param args the command line arguments
@@ -40,7 +39,8 @@ public class RushHour
      * @throws java.io.FileNotFoundException
      */
     public static void main(String[] args)
-        throws InvalidMovementException, VehicleConstructorError, FileNotFoundException
+        throws InvalidMovementException, VehicleConstructorError,
+               FileNotFoundException
     {
         final GameBoard board = new GameBoard();
         final RushHour game = new RushHour();
@@ -66,6 +66,8 @@ public class RushHour
         {
             board.moveVehicle(move);
         }
+        
+        
 
         //This hashMap will use the dynamic information, in the form of a
         //string, as the key and has a string array the first item is the color 
@@ -257,23 +259,21 @@ public class RushHour
 
         //This will hold the total number of moves in the solution
         int numMoves = 0;
+        
         //This will hold all the moves in the solution
         ArrayList<String> allMoves = new ArrayList<>();
 
         if (solved)
         {
             String currentMove = finalMove;
-            
+
             while (nodes.get(currentMove).parent() != null)
             {
                 game.pushLastMove(nodes.get(currentMove).move());
                 currentMove = nodes.get(currentMove).parent();
             }
             
-            for (Move move : game.moves())
-            {
-                board.moveVehicle(move);
-            }
+            board.setMoves(game.moves());
         }
     }
 

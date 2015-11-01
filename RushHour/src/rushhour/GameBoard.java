@@ -8,6 +8,8 @@ import java.awt.Color;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 
 /**
@@ -26,6 +28,8 @@ public class GameBoard
 
         grids = new HashMap<>();
         vehicles = new ArrayList<>();
+        moves = new ArrayList<>();
+        this.movePosition = 0;
 
         // all components in GridPanel are JLabels
         defaultColor = GridPanel.getComponent(0).getBackground();
@@ -51,6 +55,8 @@ public class GameBoard
 
     final private HashMap<String, Component> grids;
     final private ArrayList<Vehicle> vehicles;
+    private ArrayList<Move> moves;
+    private int movePosition;
     
     public String getDynamicString()
     {
@@ -61,6 +67,11 @@ public class GameBoard
         }
         
         return dynamicInfo;
+    }
+    
+    public void setMoves(ArrayList<Move> moves)
+    {
+        this.moves = moves;
     }
 
     public void addVehicle(Vehicle newVehicle)
@@ -252,6 +263,9 @@ public class GameBoard
         Grid50 = new javax.swing.JLabel();
         Grid51 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        BackButton = new javax.swing.JButton();
+        ForwardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -726,12 +740,40 @@ public class GameBoard
         jLabel1.setFocusable(false);
         jLabel1.setName(""); // NOI18N
 
+        jLabel2.setText("Step through solution");
+
+        BackButton.setText("Back");
+        BackButton.setPreferredSize(new java.awt.Dimension(94, 29));
+        BackButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                BackButtonActionPerformed(evt);
+            }
+        });
+
+        ForwardButton.setText("Forward");
+        ForwardButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                ForwardButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ForwardButton))
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(GridPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
@@ -746,7 +788,14 @@ public class GameBoard
                         .addComponent(GridPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(217, 217, 217)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ForwardButton))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -754,6 +803,40 @@ public class GameBoard
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackButtonActionPerformed
+    {//GEN-HEADEREND:event_BackButtonActionPerformed
+        try
+        {
+            if (this.movePosition != 0)
+            {
+                this.movePosition--;
+                this.moveVehicle(moves.get(this.movePosition).invert());
+            }
+        }
+        catch (InvalidMovementException ex)
+        {
+            Logger.getLogger(GameBoard.class.getName()).log(Level.SEVERE, null,
+                ex);
+        }
+    }//GEN-LAST:event_BackButtonActionPerformed
+
+    private void ForwardButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ForwardButtonActionPerformed
+    {//GEN-HEADEREND:event_ForwardButtonActionPerformed
+        try
+        {
+            if (this.movePosition < moves.size())
+            {
+                this.moveVehicle(moves.get(this.movePosition));
+                this.movePosition++;
+            }
+        }
+        catch (InvalidMovementException ex)
+        {
+            Logger.getLogger(GameBoard.class.getName()).log(Level.SEVERE, null,
+                ex);
+        }
+    }//GEN-LAST:event_ForwardButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -816,6 +899,8 @@ public class GameBoard
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackButton;
+    private javax.swing.JButton ForwardButton;
     private javax.swing.JLabel Grid00;
     private javax.swing.JLabel Grid01;
     private javax.swing.JLabel Grid02;
@@ -854,5 +939,6 @@ public class GameBoard
     private javax.swing.JLabel Grid55;
     private javax.swing.JPanel GridPanel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
