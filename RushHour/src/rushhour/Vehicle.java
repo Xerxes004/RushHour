@@ -9,15 +9,42 @@ public class Vehicle
     public Vehicle(String type, String color, int x, int y, String orientation)
         throws VehicleConstructorError
     {
-        this.type = type;
-        this.length = (this.type.equals("car")) ? 2 : 3;
-        this.x = x;
-        this.y = y;
-        this.orientation = orientation;
+        if (type.equals("car") || type.equals("truck"))
+        {
+            this.type = type;
+            this.length = (this.type.equals("car")) ? 2 : 3;
+        }
+        else
+        {
+            throw new VehicleConstructorError(type + " is not a car or truck");
+        }
+
+        if ((x >= 0) || (x <= 5) || (y >= 0) || (y <= 5))
+        {
+            this.x = x;
+            this.y = y;
+        }
+        else
+        {
+            String msg = "(" + x + "," + y + ") is not a valid coordinate.";
+            throw new VehicleConstructorError(msg);
+        }
+
+        if (orientation.equals("h") || orientation.equals("v"))
+        {
+            this.orientation = orientation;
+        }
+        else
+        {
+            String msg = orientation + " is not a valid orientation.";
+            throw new VehicleConstructorError(msg);
+        }
+
         this.colorString = color;
 
         this.colorMap = new HashMap<>();
 
+        // map all possible colors
         this.colorMap.put("red", Color.red);
         this.colorMap.put("lime", Color.decode("0x66FF66"));
         this.colorMap.put("purple", Color.decode("0x660198"));
@@ -78,16 +105,16 @@ public class Vehicle
     {
         return this.y;
     }
-    
+
     public String orientation()
     {
         return this.orientation;
     }
-    
+
     public String dynamicInfo()
     {
         String answer = "";
-            
+
         if (this.orientation.equals("h"))
         {
             answer += this.x;
@@ -96,12 +123,13 @@ public class Vehicle
         {
             answer += this.y;
         }
-        
+
         return answer;
     }
 
     /**
      * Move this vehicle to the left one space.
+     *
      * @return whether the vehicle was successfully moved
      * @throws InvalidMovementException thrown when a vertical vehicle is moved
      * left
@@ -130,8 +158,9 @@ public class Vehicle
 
     /**
      * Moves the vehicle a number of spaces to the left.
+     *
      * @param spaces number of spaces to move
-     * @return whether or not the vehicle was able to be moved the full 
+     * @return whether or not the vehicle was able to be moved the full
      * distance.
      * @throws InvalidMovementException thrown when a vertical vehicle is moved
      * left
@@ -152,6 +181,7 @@ public class Vehicle
 
     /**
      * Moves this vehicle to the right.
+     *
      * @return whether or not the operation succeeded
      * @throws InvalidMovementException thrown when a vertical vehicle is moved
      * right
@@ -180,6 +210,7 @@ public class Vehicle
 
     /**
      * Moves this vehicle a number of spaces to the right.
+     *
      * @param spaces number of spaces to move
      * @return whether the operation succeeded fully or not
      * @throws InvalidMovementException thrown when a vertical vehicle is moved
