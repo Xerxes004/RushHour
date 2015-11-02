@@ -754,7 +754,6 @@ public class GameBoard
         ExitLabel.setForeground(new java.awt.Color(255, 0, 51));
         ExitLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ExitLabel.setText("EXIT");
-        ExitLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ExitLabel.setFocusable(false);
         ExitLabel.setName(""); // NOI18N
         ExitLabel.setOpaque(true);
@@ -816,9 +815,6 @@ public class GameBoard
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(GridPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(totalMoves)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -829,8 +825,9 @@ public class GameBoard
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ForwardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(GridPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(216, 216, 216)
+                        .addGap(205, 205, 205)
                         .addComponent(ExitLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -849,7 +846,6 @@ public class GameBoard
             if (this.movePosition == this.moves.size() + 1)
             {
                 Grid34.setBackground(Color.red);
-                ExitLabel.setBackground(Color.decode("0xEEEEEE"));
                 this.movePosition = this.moves.size();
                 moveCounterLabel.setText("Move: " + this.movePosition);
             }
@@ -881,7 +877,6 @@ public class GameBoard
             {
                 this.movePosition = this.moves.size() + 1;
                 Grid34.setBackground(defaultColor);
-                ExitLabel.setBackground(Color.red);
                 moveCounterLabel.setText("Move: " + this.movePosition);
             }
             
