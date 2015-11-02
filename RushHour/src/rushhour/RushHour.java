@@ -63,22 +63,23 @@ public class RushHour
             }
         });
 
+        // populate the internal variables with game information
         this.parseInput(inputFileName);
 
+        // add all vehicles to the GUI board
         for (Vehicle v : this.vehicles)
         {
             board.addVehicle(v);
         }
 
-        //This hashMap will use the dynamic information, in the form of a
-        //string, as the key and has a string array the first item is the colorValue 
-        // of the node and the second is the parent node
+        // Keys are dynamic values created from the current board state.
+        // Values contain the previous dynamic value and the Move subsequently
+        // taken.
         HashMap<String, DynamicMove> moves = new HashMap();
 
-        //First moves parent is null
+        // First move's parent is null
         String dynamicParentString = null;
 
-        //This is for easy of access
         ArrayList<Vehicle> dynamicVehicles = this.getVehicles();
 
         //Put the dynamic info inot a string
@@ -99,11 +100,11 @@ public class RushHour
         //Put the first node in the hashmap
         moves.put(dynamicInfo, new DynamicMove(dynamicParentString, null));
 
-        // This is the queue we will use to do the breath first search
-        Queue<String> moveQueue = new LinkedList();
+        // This is the queue we will use to do the breadth first search
+        Queue<String> dynamicMoveValuesQueue = new LinkedList();
 
         //Put the first node on the queue
-        moveQueue.add(dynamicInfo);
+        dynamicMoveValuesQueue.add(dynamicInfo);
 
         //Tell if the game is over
         boolean solved = false;
@@ -111,18 +112,19 @@ public class RushHour
         //String to hold the last move
         String winningDynamicString = "";
 
-        //This is an array representation of the board with the first index being 
-        //the number of the row and the second being the number of the column
-        String[][] boardArray = new String[6][6];
+        // This is an array representation of the board with the first index 
+        // being  the number of the row and the second being the number of the 
+        // column
+        String[][] abstractBoard = new String[6][6];
 
         //This loop will do the search
-        while ((!moveQueue.isEmpty()) && (!solved))
+        while ((!dynamicMoveValuesQueue.isEmpty()) && (!solved))
         {
             //Get node
-            String queueFront = moveQueue.poll();
+            String queueFront = dynamicMoveValuesQueue.poll();
 
             //Get array representation of the board
-            boardArray = this.getArrayFromDynamic(queueFront);
+            abstractBoard = this.getAbstractBoardRepresentation(queueFront);
 
             //Loop through all the cars to get all the possible moves
             for (int i = 0; i < this.numCars; i++)
@@ -136,14 +138,14 @@ public class RushHour
                 //If the car is horizontal
                 if (orient.equals("h"))
                 {
-                    //Get the dynamic variable from the srting
+                    //Get the dynamic variable from the dynamic value string
                     x = Integer.parseInt(queueFront.substring(i, i + 1));
                     y = currentCar.y();
 
                     //If it is possible to move the car to the left
                     if (x != 0)
                     {
-                        if (boardArray[y][x - 1].equals("_"))
+                        if (abstractBoard[y][x - 1].equals("_"))
                         {
                             //Make dynamic string to match the move
                             String leftMove = queueFront.substring(0, i)
@@ -162,14 +164,15 @@ public class RushHour
                                         currentCar.color(), 1, "L")));
 
                                 //Add node to the queue
-                                moveQueue.add(leftMove);
+                                dynamicMoveValuesQueue.add(leftMove);
                             }
                         }
                     }
 
                     //See if the car can move right
                     if ((x + currentCar.length() - 1 < 5)
-                        && (boardArray[y][x + currentCar.length()].equals("_")))
+                        && 
+                        (abstractBoard[y][x + currentCar.length()].equals("_")))
                     {
                         //Make dynamic string to match the move
                         String rightMove = queueFront.substring(0, i)
@@ -188,7 +191,7 @@ public class RushHour
                                     new Move(currentCar.color(), 1, "R")));
 
                             //Add node to the queue
-                            moveQueue.add(rightMove);
+                            dynamicMoveValuesQueue.add(rightMove);
                         }
                     }
                 }
@@ -203,7 +206,7 @@ public class RushHour
                     //See of the car can move up
                     if (y != 0)
                     {
-                        if (boardArray[y - 1][x].equals("_"))
+                        if (abstractBoard[y - 1][x].equals("_"))
                         {
                             //Make dynamic string to match the move
                             String upMove = queueFront.substring(0, i)
@@ -223,14 +226,15 @@ public class RushHour
                                         currentCar.color(), 1, "U")));
 
                                 //Add to the queue
-                                moveQueue.add(upMove);
+                                dynamicMoveValuesQueue.add(upMove);
                             }
                         }
                     }
 
                     //See if a move down is possible
                     if ((y + currentCar.length() - 1 < 5)
-                        && (boardArray[y + currentCar.length()][x].equals("_")))
+                        && 
+                        (abstractBoard[y + currentCar.length()][x].equals("_")))
                     {
                         //Make a dynamic string to match the move
                         String downMove = queueFront.substring(0, i)
@@ -249,7 +253,7 @@ public class RushHour
                                     new Move(currentCar.color(), 1, "D")));
 
                             //Add to the queue
-                            moveQueue.add(downMove);
+                            dynamicMoveValuesQueue.add(downMove);
                         }
                     }
                 }
@@ -275,6 +279,10 @@ public class RushHour
             }
 
             board.setMoves(this.moves());
+        }
+        else
+        {
+            System.out.println("Solve failed! Check input file.");
         }
 
         // returns one bigger because the last move is moving off the board, 
@@ -416,7 +424,7 @@ public class RushHour
      * This method allows for very easy debugging when attempting to see how the
      * queue is operating during a solve.
      */
-    public String[][] getArrayFromDynamic(String dynamicValue)
+    public String[][] getAbstractBoardRepresentation(String dynamicValue)
     {
 
         String[][] gameBoard = new String[6][6];
@@ -472,7 +480,8 @@ public class RushHour
     }
 
     /**
-     * Prints the 6x6 array returned by the getArrayFromDynamic method.
+     * Prints the 6x6 array returned by the getAbstractBoardRepresentation 
+     * method.
      *
      * @param board the 6x6 board array of Strings
      */
