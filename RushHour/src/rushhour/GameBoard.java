@@ -292,7 +292,7 @@ public class GameBoard
     {
         return grids.get(name);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -302,7 +302,7 @@ public class GameBoard
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents()
     {
-
+        
         GridPanel = new javax.swing.JPanel();
         Grid02 = new javax.swing.JLabel();
         Grid14 = new javax.swing.JLabel();
@@ -347,13 +347,13 @@ public class GameBoard
         moveCounterLabel = new javax.swing.JLabel();
         totalMovesLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-
+        
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
-
+        
         GridPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Rush Hour!", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Avenir Next", 0, 14))); // NOI18N
         GridPanel.setName("GridPanel"); // NOI18N
-
+        
         Grid02.setBackground(new java.awt.Color(255, 255, 255));
         Grid02.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid02.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -362,7 +362,7 @@ public class GameBoard
         Grid02.setName("Grid25"); // NOI18N
         Grid02.setOpaque(true);
         Grid02.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid14.setBackground(new java.awt.Color(255, 255, 255));
         Grid14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -371,7 +371,7 @@ public class GameBoard
         Grid14.setName("Grid44"); // NOI18N
         Grid14.setOpaque(true);
         Grid14.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid00.setBackground(new java.awt.Color(255, 255, 255));
         Grid00.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid00.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -380,7 +380,7 @@ public class GameBoard
         Grid00.setName("Grid05"); // NOI18N
         Grid00.setOpaque(true);
         Grid00.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid30.setBackground(new java.awt.Color(255, 255, 255));
         Grid30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -389,7 +389,7 @@ public class GameBoard
         Grid30.setName("Grid02"); // NOI18N
         Grid30.setOpaque(true);
         Grid30.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid31.setBackground(new java.awt.Color(255, 255, 255));
         Grid31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -398,7 +398,7 @@ public class GameBoard
         Grid31.setName("Grid12"); // NOI18N
         Grid31.setOpaque(true);
         Grid31.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid05.setBackground(new java.awt.Color(255, 255, 255));
         Grid05.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid05.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -407,7 +407,7 @@ public class GameBoard
         Grid05.setName("Grid55"); // NOI18N
         Grid05.setOpaque(true);
         Grid05.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid20.setBackground(new java.awt.Color(255, 255, 255));
         Grid20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -416,7 +416,7 @@ public class GameBoard
         Grid20.setName("Grid03"); // NOI18N
         Grid20.setOpaque(true);
         Grid20.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid42.setBackground(new java.awt.Color(255, 255, 255));
         Grid42.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -425,7 +425,7 @@ public class GameBoard
         Grid42.setName("Grid21"); // NOI18N
         Grid42.setOpaque(true);
         Grid42.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid43.setBackground(new java.awt.Color(255, 255, 255));
         Grid43.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid43.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -434,7 +434,7 @@ public class GameBoard
         Grid43.setName("Grid31"); // NOI18N
         Grid43.setOpaque(true);
         Grid43.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid11.setBackground(new java.awt.Color(255, 255, 255));
         Grid11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -443,7 +443,7 @@ public class GameBoard
         Grid11.setName("Grid14"); // NOI18N
         Grid11.setOpaque(true);
         Grid11.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid35.setBackground(new java.awt.Color(255, 255, 255));
         Grid35.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -452,7 +452,7 @@ public class GameBoard
         Grid35.setName("Grid52"); // NOI18N
         Grid35.setOpaque(true);
         Grid35.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid41.setBackground(new java.awt.Color(255, 255, 255));
         Grid41.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid41.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -461,7 +461,7 @@ public class GameBoard
         Grid41.setName("Grid11"); // NOI18N
         Grid41.setOpaque(true);
         Grid41.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid03.setBackground(new java.awt.Color(255, 255, 255));
         Grid03.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid03.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -470,7 +470,7 @@ public class GameBoard
         Grid03.setName("Grid35"); // NOI18N
         Grid03.setOpaque(true);
         Grid03.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid10.setBackground(new java.awt.Color(255, 255, 255));
         Grid10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -479,7 +479,7 @@ public class GameBoard
         Grid10.setName("Grid04"); // NOI18N
         Grid10.setOpaque(true);
         Grid10.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid23.setBackground(new java.awt.Color(255, 255, 255));
         Grid23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -488,7 +488,7 @@ public class GameBoard
         Grid23.setName("Grid33"); // NOI18N
         Grid23.setOpaque(true);
         Grid23.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid40.setBackground(new java.awt.Color(255, 255, 255));
         Grid40.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -497,7 +497,7 @@ public class GameBoard
         Grid40.setName("Grid01"); // NOI18N
         Grid40.setOpaque(true);
         Grid40.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid33.setBackground(new java.awt.Color(255, 255, 255));
         Grid33.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -506,7 +506,7 @@ public class GameBoard
         Grid33.setName("Grid32"); // NOI18N
         Grid33.setOpaque(true);
         Grid33.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid25.setBackground(new java.awt.Color(255, 255, 255));
         Grid25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -515,7 +515,7 @@ public class GameBoard
         Grid25.setName("Grid53"); // NOI18N
         Grid25.setOpaque(true);
         Grid25.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid01.setBackground(new java.awt.Color(255, 255, 255));
         Grid01.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid01.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -524,7 +524,7 @@ public class GameBoard
         Grid01.setName("Grid15"); // NOI18N
         Grid01.setOpaque(true);
         Grid01.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid32.setBackground(new java.awt.Color(255, 255, 255));
         Grid32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -533,7 +533,7 @@ public class GameBoard
         Grid32.setName("Grid22"); // NOI18N
         Grid32.setOpaque(true);
         Grid32.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid04.setBackground(new java.awt.Color(255, 255, 255));
         Grid04.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid04.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -542,7 +542,7 @@ public class GameBoard
         Grid04.setName("Grid45"); // NOI18N
         Grid04.setOpaque(true);
         Grid04.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid45.setBackground(new java.awt.Color(255, 255, 255));
         Grid45.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid45.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -551,7 +551,7 @@ public class GameBoard
         Grid45.setName("Grid51"); // NOI18N
         Grid45.setOpaque(true);
         Grid45.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid12.setBackground(new java.awt.Color(255, 255, 255));
         Grid12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -560,7 +560,7 @@ public class GameBoard
         Grid12.setName("Grid24"); // NOI18N
         Grid12.setOpaque(true);
         Grid12.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid24.setBackground(new java.awt.Color(255, 255, 255));
         Grid24.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -569,7 +569,7 @@ public class GameBoard
         Grid24.setName("Grid43"); // NOI18N
         Grid24.setOpaque(true);
         Grid24.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid34.setBackground(new java.awt.Color(255, 255, 255));
         Grid34.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -578,7 +578,7 @@ public class GameBoard
         Grid34.setName("Grid42"); // NOI18N
         Grid34.setOpaque(true);
         Grid34.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid21.setBackground(new java.awt.Color(255, 255, 255));
         Grid21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -587,7 +587,7 @@ public class GameBoard
         Grid21.setName("Grid13"); // NOI18N
         Grid21.setOpaque(true);
         Grid21.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid15.setBackground(new java.awt.Color(255, 255, 255));
         Grid15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -596,7 +596,7 @@ public class GameBoard
         Grid15.setName("Grid54"); // NOI18N
         Grid15.setOpaque(true);
         Grid15.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid22.setBackground(new java.awt.Color(255, 255, 255));
         Grid22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -605,7 +605,7 @@ public class GameBoard
         Grid22.setName("Grid23"); // NOI18N
         Grid22.setOpaque(true);
         Grid22.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid44.setBackground(new java.awt.Color(255, 255, 255));
         Grid44.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid44.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -614,7 +614,7 @@ public class GameBoard
         Grid44.setName("Grid41"); // NOI18N
         Grid44.setOpaque(true);
         Grid44.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid13.setBackground(new java.awt.Color(255, 255, 255));
         Grid13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -623,7 +623,7 @@ public class GameBoard
         Grid13.setName("Grid34"); // NOI18N
         Grid13.setOpaque(true);
         Grid13.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid54.setBackground(new java.awt.Color(255, 255, 255));
         Grid54.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid54.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -632,7 +632,7 @@ public class GameBoard
         Grid54.setName("Grid40"); // NOI18N
         Grid54.setOpaque(true);
         Grid54.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid52.setBackground(new java.awt.Color(255, 255, 255));
         Grid52.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid52.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -641,7 +641,7 @@ public class GameBoard
         Grid52.setName("Grid20"); // NOI18N
         Grid52.setOpaque(true);
         Grid52.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid55.setBackground(new java.awt.Color(255, 255, 255));
         Grid55.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid55.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -650,7 +650,7 @@ public class GameBoard
         Grid55.setName("Grid50"); // NOI18N
         Grid55.setOpaque(true);
         Grid55.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid53.setBackground(new java.awt.Color(255, 255, 255));
         Grid53.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid53.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -659,7 +659,7 @@ public class GameBoard
         Grid53.setName("Grid30"); // NOI18N
         Grid53.setOpaque(true);
         Grid53.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid50.setBackground(new java.awt.Color(255, 255, 255));
         Grid50.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid50.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -668,7 +668,7 @@ public class GameBoard
         Grid50.setName("Grid00"); // NOI18N
         Grid50.setOpaque(true);
         Grid50.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         Grid51.setBackground(new java.awt.Color(255, 255, 255));
         Grid51.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grid51.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -677,145 +677,145 @@ public class GameBoard
         Grid51.setName("Grid10"); // NOI18N
         Grid51.setOpaque(true);
         Grid51.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         javax.swing.GroupLayout GridPanelLayout = new javax.swing.GroupLayout(GridPanel);
         GridPanel.setLayout(GridPanelLayout);
         GridPanelLayout.setHorizontalGroup(
-            GridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(GridPanelLayout.createSequentialGroup()
-                .addGroup(GridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GridPanelLayout.createSequentialGroup()
-                        .addGap(0, 10, Short.MAX_VALUE)
-                        .addComponent(Grid00, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Grid01, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Grid02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Grid03, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Grid04, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Grid05, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(GridPanelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(GridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.CENTER, GridPanelLayout.createSequentialGroup()
-                                .addComponent(Grid30, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid31, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid32, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid33, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid34, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid35, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.CENTER, GridPanelLayout.createSequentialGroup()
-                                .addComponent(Grid40, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid41, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid42, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid43, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid44, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid45, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GridPanelLayout.createSequentialGroup()
-                                .addComponent(Grid50, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid51, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid52, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid53, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid54, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid55, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GridPanelLayout.createSequentialGroup()
-                                .addComponent(Grid20, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid21, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid22, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid23, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid24, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid25, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GridPanelLayout.createSequentialGroup()
-                                .addComponent(Grid10, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid11, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid12, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid13, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid14, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Grid15, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
-        );
+                                           GridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                           .addGroup(GridPanelLayout.createSequentialGroup()
+                                                     .addGroup(GridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                               .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GridPanelLayout.createSequentialGroup()
+                                                                         .addGap(0, 10, Short.MAX_VALUE)
+                                                                         .addComponent(Grid00, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                         .addComponent(Grid01, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                         .addComponent(Grid02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                         .addComponent(Grid03, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                         .addComponent(Grid04, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                         .addComponent(Grid05, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                               .addGroup(GridPanelLayout.createSequentialGroup()
+                                                                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                         .addGroup(GridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                   .addGroup(javax.swing.GroupLayout.Alignment.CENTER, GridPanelLayout.createSequentialGroup()
+                                                                                             .addComponent(Grid30, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid31, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid32, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid33, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid34, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid35, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                                   .addGroup(javax.swing.GroupLayout.Alignment.CENTER, GridPanelLayout.createSequentialGroup()
+                                                                                             .addComponent(Grid40, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid41, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid42, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid43, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid44, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid45, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                                   .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GridPanelLayout.createSequentialGroup()
+                                                                                             .addComponent(Grid50, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid51, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid52, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid53, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid54, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid55, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                                   .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GridPanelLayout.createSequentialGroup()
+                                                                                             .addComponent(Grid20, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid21, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid22, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid23, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid24, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid25, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                                   .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GridPanelLayout.createSequentialGroup()
+                                                                                             .addComponent(Grid10, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid11, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid12, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid13, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid14, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                             .addComponent(Grid15, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                     .addContainerGap())
+                                           );
         GridPanelLayout.setVerticalGroup(
-            GridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GridPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(GridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Grid50, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid51, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid52, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid53, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(GridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Grid40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(GridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Grid30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(GridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Grid20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(GridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Grid10, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid11, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid12, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(GridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Grid00, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid01, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid03, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid04, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grid05, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
+                                         GridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GridPanelLayout.createSequentialGroup()
+                                                   .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                   .addGroup(GridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                             .addComponent(Grid50, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid51, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid52, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid53, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                   .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                   .addGroup(GridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                             .addComponent(Grid40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                   .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                   .addGroup(GridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                             .addComponent(Grid30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                   .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                   .addGroup(GridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                             .addComponent(Grid20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                   .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                   .addGroup(GridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                             .addComponent(Grid10, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid11, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid12, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                   .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                   .addGroup(GridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                             .addComponent(Grid00, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid01, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid03, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid04, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                             .addComponent(Grid05, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                   .addContainerGap())
+                                         );
+        
         ExitLabel.setFont(new java.awt.Font("Avenir Next", 0, 24)); // NOI18N
         ExitLabel.setForeground(new java.awt.Color(255, 0, 51));
         ExitLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -824,91 +824,91 @@ public class GameBoard
         ExitLabel.setName(""); // NOI18N
         ExitLabel.setOpaque(true);
         ExitLabel.setPreferredSize(new java.awt.Dimension(80, 80));
-
+        
         jLabel2.setText("Step through solution");
-
+        
         BackButton.setText("Prev");
         BackButton.setPreferredSize(new java.awt.Dimension(94, 29));
         BackButton.addActionListener(new java.awt.event.ActionListener()
-        {
+                                     {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
                 BackButtonActionPerformed(evt);
             }
         });
-
+        
         ForwardButton.setText("Next");
         ForwardButton.addActionListener(new java.awt.event.ActionListener()
-        {
+                                        {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
                 ForwardButtonActionPerformed(evt);
             }
         });
-
+        
         moveCounterLabel.setText("Move: 0");
-
+        
         totalMovesLabel.setText("jLabel3");
-
+        
         jLabel1.setForeground(new java.awt.Color(153, 153, 153));
         jLabel1.setText("Wesley Kelly and James Von Eiff, Copyright Cedarville University 2015.");
-
+        
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(ForwardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel2))
-                            .addComponent(totalMovesLabel)
-                            .addComponent(moveCounterLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(GridPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ExitLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
+                                  layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                  .addGroup(layout.createSequentialGroup()
+                                            .addContainerGap()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                      .addGroup(layout.createSequentialGroup()
+                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                                                                    .addGroup(layout.createSequentialGroup()
+                                                                                              .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                                              .addComponent(ForwardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                                    .addComponent(jLabel2))
+                                                                          .addComponent(totalMovesLabel)
+                                                                          .addComponent(moveCounterLabel))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(GridPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(ExitLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addContainerGap())
+                                                      .addGroup(layout.createSequentialGroup()
+                                                                .addGap(5, 5, 5)
+                                                                .addComponent(jLabel1)
+                                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                  );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(totalMovesLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(moveCounterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ForwardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(GridPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(205, 205, 205)
-                        .addComponent(ExitLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap())
-        );
-
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                              .addGap(35, 35, 35)
+                                                              .addComponent(totalMovesLabel)
+                                                              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                              .addComponent(moveCounterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                              .addGap(18, 18, 18)
+                                                              .addComponent(jLabel2)
+                                                              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                              .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                        .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(ForwardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                    .addComponent(GridPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                              .addGap(205, 205, 205)
+                                                              .addComponent(ExitLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                          .addComponent(jLabel1)
+                                          .addContainerGap())
+                                );
+        
         GridPanel.getAccessibleContext().setAccessibleName("GridPanel");
-
+        
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackButtonActionPerformed
     {//GEN-HEADEREND:event_BackButtonActionPerformed
         if (this.movePosition == this.moves.size() + 1)
@@ -924,7 +924,7 @@ public class GameBoard
             moveCounterLabel.setText("Move: " + this.movePosition);
         }
     }//GEN-LAST:event_BackButtonActionPerformed
-
+    
     private void ForwardButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ForwardButtonActionPerformed
     {//GEN-HEADEREND:event_ForwardButtonActionPerformed
         if (this.movePosition < moves.size())
@@ -940,7 +940,7 @@ public class GameBoard
             moveCounterLabel.setText("Move: " + this.movePosition);
         }
     }//GEN-LAST:event_ForwardButtonActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -965,35 +965,35 @@ public class GameBoard
         catch (ClassNotFoundException ex)
         {
             java.util.logging.Logger.getLogger(GameBoard.class.getName()).log(
-                java.util.logging.Level.SEVERE, null, ex);
+                                                                              java.util.logging.Level.SEVERE, null, ex);
         }
         catch (InstantiationException ex)
         {
             java.util.logging.Logger.getLogger(GameBoard.class.getName()).log(
-                java.util.logging.Level.SEVERE, null, ex);
+                                                                              java.util.logging.Level.SEVERE, null, ex);
         }
         catch (IllegalAccessException ex)
         {
             java.util.logging.Logger.getLogger(GameBoard.class.getName()).log(
-                java.util.logging.Level.SEVERE, null, ex);
+                                                                              java.util.logging.Level.SEVERE, null, ex);
         }
         catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
             java.util.logging.Logger.getLogger(GameBoard.class.getName()).log(
-                java.util.logging.Level.SEVERE, null, ex);
+                                                                              java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable()
-        {
+                                        {
             public void run()
             {
                 new GameBoard().setVisible(true);
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackButton;
     private javax.swing.JLabel ExitLabel;
