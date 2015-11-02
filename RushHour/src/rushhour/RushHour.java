@@ -1,17 +1,20 @@
+
 /**
  * This is the main class for the Rush Hour game.
- * 
+ *
  * @author Wesley Kelly, James Von Eiff
  * @version 1.0
- * 
- * File: RushHour.java
- * Created: 27 October 2015
- * 
- * Copyright Cedarville University, its Computer Science faculty, and the 
+ *
+ * File: RushHour.java Created: 27 October 2015
+ *
+ * Copyright Cedarville University, its Computer Science faculty, and the
  * authors. All rights reserved.
- * 
+ *
  * Description: This class contains all of the methods to solve the Rush Hour
  * game for a given input file, and then pass the solution to a GameBoard GUI.
+ *
+ * On the command line, run as java -jar RushHour.jar [filename] to solve the
+ * file and open the solution in a GUI.
  */
 package rushhour;
 
@@ -39,36 +42,16 @@ public class RushHour
     final private GameBoard board;
 
     /**
-     * @param args the command line arguments
-     * @throws rushhour.InvalidMovementException
-     * @throws rushhour.VehicleConstructorError
-     * @throws java.io.FileNotFoundException
-     */
-    public static void main(String[] args)
-        throws InvalidMovementException, 
-               VehicleConstructorError,
-               FileNotFoundException
-    {
-        GameBoard board = new GameBoard();
-        RushHour game = new RushHour(board);
-        int solutionLength = game.solve("game36.dat");
-
-        System.out.println("Minimum number of moves: " + solutionLength);
-        game.printMoves();
-    }
-
-    /**
      * This method solves the Rush Hour game with the given input file name.
+     *
      * @param inputFileName the name of the file containing the Rush Hour game
      * parameters
-     * @return
-     * @throws VehicleConstructorError
-     * @throws FileNotFoundException
-     * @throws InvalidMovementException 
+     * @return the length of the solution, including the last move of the red
+     * car off the board
+     * @throws FileNotFoundException thrown if the input file is not found
      */
     public int solve(String inputFileName)
-        throws VehicleConstructorError, FileNotFoundException,
-               InvalidMovementException
+        throws FileNotFoundException
     {
         // Create and display the GameBoard
         java.awt.EventQueue.invokeLater(new Runnable()
@@ -106,7 +89,7 @@ public class RushHour
 
         for (int i = 0; i < this.numCars; i++)
         {
-            dynamicInfo += dynamicVehicles.get(i).dynamicInfo();
+            dynamicInfo += dynamicVehicles.get(i).dynamicValue();
             if (dynamicVehicles.get(i).color().equals("red"))
             {
                 redIndex = i;
@@ -299,41 +282,74 @@ public class RushHour
         return lastMove.size() + 1;
     }
 
+    /**
+     * Prints the moves taken to find the optimal solution.
+     */
     public void printMoves()
     {
         System.out.println("(last move is red car off the board)");
-        
+
         int i = 1;
-        
+
         for (Move move : this.lastMove)
         {
             System.out.println(
-                i + ": " 
-                + move.color() + " " 
-                + move.spaces() + " " 
+                i + ": "
+                + move.color() + " "
+                + move.spaces() + " "
                 + move.direction()
             );
             i++;
         }
     }
 
+    /**
+     * Pushes the last move taken to the front of the lastMove <code>ArrayList
+     * </code> which is used to reconstruct the best move.
+     *
+     * @param move the last move taken
+     *
+     * Walk through the solution from the last move taken to the first move
+     * taken for desired results.
+     */
     public void pushLastMove(Move move)
     {
         this.lastMove.add(0, move);
     }
 
+    /**
+     * Gets the ArrayList of last moves.
+     *
+     * @return the ArrayList of last moves
+     *
+     * This array will be empty unless you use pushLastMove.
+     */
     public ArrayList<Move> moves()
     {
         return this.lastMove;
     }
 
+    /**
+     * Gets the ArrayList of vehicles created from the input file.
+     *
+     * @return the ArrayList of vehicles from the input file
+     *
+     * The list will be empty unless parseInput is called on a file.
+     */
     public ArrayList<Vehicle> getVehicles()
     {
         return this.vehicles;
     }
 
+    /**
+     * Parses the file to find vehicles for this particular Rush Hour scenario.
+     *
+     * @param fileName the name of the file containing the Rush Hour game
+     * vehicles and positions.
+     * @throws FileNotFoundException thrown if the specified file is not found
+     */
     public void parseInput(String fileName)
-        throws VehicleConstructorError, FileNotFoundException
+        throws FileNotFoundException
     {
         Scanner scan = new Scanner(new File(fileName));
         if (scan.hasNextInt())
@@ -376,12 +392,31 @@ public class RushHour
             {
                 x = scan.nextInt() - 1;
             }
-
-            this.vehicles.add(new Vehicle(type, color, x, y, orientation));
+            try
+            {
+                this.vehicles.add(new Vehicle(type, color, x, y, orientation));
+            }
+            catch (VehicleConstructorError ex)
+            {
+                String msg = "Error during vehicle construction while parsing ";
+                msg += "the input file:" + ex.getMessage();
+                System.out.println(msg);
+            }
         }
     }
 
-    public String[][] getArrayFromDynamic(String dynam)
+    /**
+     * Creates a virtual game board using the "dynamic value" from the current
+     * board state, where each underscore represents an open space and the first
+     * letter of the car's color takes up non-empty spaces.
+     *
+     * @param dynamicValue the dynamic value of the current board state
+     * @return a 6x6 array of Strings that contain the current board state
+     *
+     * This method allows for very easy debugging when attempting to see how the
+     * queue is operating during a solve.
+     */
+    public String[][] getArrayFromDynamic(String dynamicValue)
     {
 
         String[][] gameBoard = new String[6][6];
@@ -403,11 +438,11 @@ public class RushHour
             if (car.orientation().equals("h"))
             {
                 y = car.y();
-                x = Integer.parseInt(dynam.substring(i, i + 1));
+                x = Integer.parseInt(dynamicValue.substring(i, i + 1));
             }
             else
             {
-                y = Integer.parseInt(dynam.substring(i, i + 1));
+                y = Integer.parseInt(dynamicValue.substring(i, i + 1));
                 x = car.x();
             }
 
@@ -436,6 +471,11 @@ public class RushHour
         return gameBoard;
     }
 
+    /**
+     * Prints the 6x6 array returned by the getArrayFromDynamic method.
+     *
+     * @param board the 6x6 board array of Strings
+     */
     private static void printBoard(String[][] board)
     {
         System.out.println("-----------");
@@ -446,6 +486,42 @@ public class RushHour
                 System.out.print(string);
             }
             System.out.println("");
+        }
+    }
+    
+    /**
+     * Runs the RushHour game and solution for the specified file named in the
+     * first command line argument.
+     *
+     * @param args the command line arguments. If an argument is present, the
+     * program tries to use it as the filename for the game to solve.
+     * @throws java.io.FileNotFoundException thrown when the specified input
+     * file is not found
+     */
+    public static void main(String[] args)
+        throws FileNotFoundException
+    {
+        GameBoard board = new GameBoard();
+        RushHour game = new RushHour(board);
+        try
+        {
+            int solutionLength = 0;
+
+            if (args.length > 0)
+            {
+                solutionLength = game.solve(args[0]);
+            }
+            else
+            {
+                solutionLength = game.solve("game1.dat");
+            }
+
+            System.out.println("Minimum number of moves: " + solutionLength);
+            game.printMoves();
+        }
+        catch (FileNotFoundException ex)
+        {
+            System.out.println("File not found: " + ex.getMessage());
         }
     }
 

@@ -1,15 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This class defines the Moves for the Rush Hour game.
+ *
+ * @author Wesley Kelly
+ * @version 1.0
+ *
+ * File: GameBoard.java Created: 27 October 2015
+ *
+ * Copyright Cedarville University, its Computer Science faculty, and the
+ * authors. All rights reserved.
+ *
+ * Description: this class is used to store information about a Move taken by
+ * a car. This class is extremely useful for moving vehicles in the GUI.
  */
 
 package rushhour;
 
-/**
- *
- * @author wes
- */
 public class Move
 {
     public Move(String color, int spaces, String direction)

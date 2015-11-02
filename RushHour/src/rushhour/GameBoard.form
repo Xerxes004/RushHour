@@ -37,7 +37,7 @@
                               </Group>
                               <Component id="jLabel2" alignment="2" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="totalMoves" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="totalMovesLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="moveCounterLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -61,7 +61,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="totalMoves" min="-2" max="-2" attributes="0"/>
+                      <Component id="totalMovesLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="moveCounterLabel" min="-2" pref="16" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -1099,7 +1099,7 @@
         <Property name="text" type="java.lang.String" value="Move: 0"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="totalMoves">
+    <Component class="javax.swing.JLabel" name="totalMovesLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel3"/>
       </Properties>

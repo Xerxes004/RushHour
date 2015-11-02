@@ -1,18 +1,18 @@
 /**
  * This class is the GameBoard for the Rush Hour game.
- * 
- * @author Wesley Kelly, James Von Eiff
+ *
+ * @author Wesley Kelly
  * @version 1.0
- * 
- * File: GameBoard.java
- * Created: 27 October 2015
- * 
- * Copyright Cedarville University, its Computer Science faculty, and the 
+ *
+ * File: GameBoard.java Created: 27 October 2015
+ *
+ * Copyright Cedarville University, its Computer Science faculty, and the
  * authors. All rights reserved.
- * 
- * Description: this class is the GameBoard GUI for the Rush Hour Game.
- * The RushHour class manipulates this GUI to update it with vehicles and a
- * proper solution array.
+ *
+ * Description: this class is the GameBoard GUI for the Rush Hour Game. The
+ * RushHour class manipulates this GUI to update it with vehicles and a proper
+ * solution array. A user can walk through this solution to see exactly how the
+ * problem was solved, step-by-step.
  */
 
 package rushhour;
@@ -21,14 +21,8 @@ import java.awt.Color;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JLabel;
 
-/**
- *
- * @author WesKellyPC
- */
 public class GameBoard
     extends javax.swing.JFrame
 {
@@ -37,19 +31,26 @@ public class GameBoard
      */
     public GameBoard()
     {
+        // netbeans code
         initComponents();
 
+        // Wes code
         grids = new HashMap<>();
         vehicles = new ArrayList<>();
         moves = new ArrayList<>();
         this.movePosition = 0;
 
-        // all components in GridPanel are JLabels
+        // All components in GridPanel are JLabels.
+        // We store the default color so that the board can be redrawn.
         defaultColor = GridPanel.getComponent(0).getBackground();
 
+        // Clear the board and get it ready for use.
+        this.clearBoard();
+
+        // Populate the ArrayList of grids which we use when drawing the board
+        // and moving vehicles.
         for (Component g : GridPanel.getComponents())
         {
-
             JLabel grid = (JLabel) g;
 
             if (grid != null)
@@ -57,7 +58,6 @@ public class GameBoard
                 if (g.getName() != null)
                 {
                     grid.setOpaque(true);
-                    grid.setText(g.getName());
                     grids.put(g.getName(), g);
                 }
             }
@@ -65,35 +65,43 @@ public class GameBoard
     }
 
     private final Color defaultColor;
-
     final private HashMap<String, Component> grids;
     final private ArrayList<Vehicle> vehicles;
     private ArrayList<Move> moves;
     private int movePosition;
-    
-    public String getDynamicString()
-    {
-        String dynamicInfo = "";
-        for (Vehicle v : vehicles)
-        {
-            dynamicInfo += v.dynamicInfo();
-        }
-        
-        return dynamicInfo;
-    }
-    
+
+    /**
+     * Sets the ArrayList of moves that should contain the best solution to the
+     * puzzle.
+     *
+     * @param moves the ArrayList of moves containing a solution
+     */
     public void setMoves(ArrayList<Move> moves)
     {
         this.moves = moves;
-        totalMoves.setText("Total moves: " + (this.moves.size() + 1));
+        totalMovesLabel.setText("Total moves: " + (this.moves.size() + 1));
     }
 
-    public void addVehicle(Vehicle newVehicle)
+    /**
+     * Adds a vehicle to the board and draws it.
+     *
+     * @param vehicle the vehicle to be added to the board.
+     *
+     * NOTE: The board is dumb and assumes you know where to place cars. They
+     * can be placed on top of one another if you don't do it right.
+     */
+    public void addVehicle(Vehicle vehicle)
     {
-        vehicles.add(newVehicle);
+        vehicles.add(vehicle);
         this.drawAllVehicles();
     }
-    
+
+    /**
+     * Finds the vehicle that was added to the board with the given color.
+     *
+     * @param color the color of the vehicle to be found
+     * @return the vehicle with the specified color, or null if not found
+     */
     private Vehicle findVehicleByColor(String color)
     {
         for (Vehicle v : vehicles)
@@ -106,6 +114,9 @@ public class GameBoard
         return null;
     }
 
+    /**
+     * Clears the board.
+     */
     private void clearBoard()
     {
         for (Component comp : GridPanel.getComponents())
@@ -116,6 +127,9 @@ public class GameBoard
         }
     }
 
+    /**
+     * Draws all vehicles stored by the board.
+     */
     private void drawAllVehicles()
     {
         clearBoard();
@@ -124,14 +138,27 @@ public class GameBoard
             drawVehicle(v);
         }
     }
-    
-    public boolean moveVehicle(Move move) throws InvalidMovementException
+
+    /**
+     * Moves the vehicle associated with the given Move object.
+     *
+     * @param move the move object containing the move to be taken
+     * @return true if the move succeeded, false otherwise
+     */
+    public boolean moveVehicle(Move move)
     {
         return moveVehicle(move.color(), move.spaces(), move.direction());
     }
 
+    /**
+     * Moves the vehicle associated with the color given.
+     *
+     * @param color the color of the vehicle to move
+     * @param moves the amount of spaces to move
+     * @param direction the direction of movement
+     * @return true if the move succeeded, false otherwise
+     */
     public boolean moveVehicle(String color, int moves, String direction)
-        throws InvalidMovementException
     {
         for (int i = 0; i < moves; i++)
         {
@@ -143,48 +170,75 @@ public class GameBoard
         return true;
     }
 
+    /**
+     * Moves the vehicle with the given color a single space.
+     *
+     * @param color the color of the vehicle being moved
+     * @param direction the direction of movement
+     * @return
+     */
     private boolean moveVehicle(String color, String direction)
-        throws InvalidMovementException
     {
-        boolean succeeded = false;
-        
-        switch (direction)
+        try
         {
-            case "u":
-            case "U":
-                succeeded = findVehicleByColor(color).up();
-                break;
-                
-            case "d":
-            case "D":
-                succeeded = findVehicleByColor(color).down();
-                break;
-                
-            case "l":
-            case "L":
-                succeeded = findVehicleByColor(color).left();
-                break;
-                
-            case "r":
-            case "R":
-                succeeded = findVehicleByColor(color).right();
-                break;
-                
-            default:
-                return false;
+            boolean succeeded = false;
+
+            switch (direction)
+            {
+                case "u":
+                case "U":
+                    succeeded = findVehicleByColor(color).up();
+                    break;
+
+                case "d":
+                case "D":
+                    succeeded = findVehicleByColor(color).down();
+                    break;
+
+                case "l":
+                case "L":
+                    succeeded = findVehicleByColor(color).left();
+                    break;
+
+                case "r":
+                case "R":
+                    succeeded = findVehicleByColor(color).right();
+                    break;
+
+                default:
+                    return false;
+            }
+
+            drawAllVehicles();
+
+            return succeeded;
         }
-        
-        drawAllVehicles();
-        
-        return succeeded;
+        catch (InvalidMovementException ex)
+        {
+            return false;
+        }
     }
 
+    /**
+     * Draws a single vehicle on the board.
+     * 
+     * @param vehicle the vehicle to draw
+     * 
+     * Useful for seeing where a single vehicle is positioned.
+     */
     public void drawOneVehicle(Vehicle vehicle)
     {
         clearBoard();
         drawVehicle(vehicle);
     }
 
+    /**
+     * Draws a vehicle on the board, but does not clear the board.
+     * 
+     * @param vehicle the vehicle to draw
+     * 
+     * Used to populate the board with vehicles.
+     */
     private void drawVehicle(Vehicle vehicle)
     {
         String front = "Grid" + vehicle.x() + vehicle.y();
@@ -227,6 +281,17 @@ public class GameBoard
             middleGrid.setBackground(vehicle.colorValue());
         }
     }
+    
+    /**
+     * Gets the component with the specified name.
+     *
+     * @param name name of component to find
+     * @return the component with the specified name, null if not found
+     */
+    public Component getComponentWithName(String name)
+    {
+        return grids.get(name);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -235,7 +300,8 @@ public class GameBoard
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         GridPanel = new javax.swing.JPanel();
         Grid02 = new javax.swing.JLabel();
@@ -279,7 +345,7 @@ public class GameBoard
         BackButton = new javax.swing.JButton();
         ForwardButton = new javax.swing.JButton();
         moveCounterLabel = new javax.swing.JLabel();
-        totalMoves = new javax.swing.JLabel();
+        totalMovesLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -763,22 +829,26 @@ public class GameBoard
 
         BackButton.setText("Prev");
         BackButton.setPreferredSize(new java.awt.Dimension(94, 29));
-        BackButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        BackButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 BackButtonActionPerformed(evt);
             }
         });
 
         ForwardButton.setText("Next");
-        ForwardButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        ForwardButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 ForwardButtonActionPerformed(evt);
             }
         });
 
         moveCounterLabel.setText("Move: 0");
 
-        totalMoves.setText("jLabel3");
+        totalMovesLabel.setText("jLabel3");
 
         jLabel1.setForeground(new java.awt.Color(153, 153, 153));
         jLabel1.setText("Wesley Kelly and James Von Eiff, Copyright Cedarville University 2015.");
@@ -798,7 +868,7 @@ public class GameBoard
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(ForwardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jLabel2))
-                            .addComponent(totalMoves)
+                            .addComponent(totalMovesLabel)
                             .addComponent(moveCounterLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(GridPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -816,7 +886,7 @@ public class GameBoard
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
-                        .addComponent(totalMoves)
+                        .addComponent(totalMovesLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(moveCounterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -841,51 +911,33 @@ public class GameBoard
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BackButtonActionPerformed
     {//GEN-HEADEREND:event_BackButtonActionPerformed
-        try
+        if (this.movePosition == this.moves.size() + 1)
         {
-            if (this.movePosition == this.moves.size() + 1)
-            {
-                Grid34.setBackground(Color.red);
-                this.movePosition = this.moves.size();
-                moveCounterLabel.setText("Move: " + this.movePosition);
-            }
-            else if (this.movePosition > 0)
-            {
-                this.movePosition--;
-                this.moveVehicle(moves.get(this.movePosition).invert());
-                moveCounterLabel.setText("Move: " + this. movePosition);
-            }
+            Grid34.setBackground(Color.red);
+            this.movePosition = this.moves.size();
+            moveCounterLabel.setText("Move: " + this.movePosition);
         }
-        catch (InvalidMovementException ex)
+        else if (this.movePosition > 0)
         {
-            Logger.getLogger(GameBoard.class.getName()).log(Level.SEVERE, null,
-                ex);
+            this.movePosition--;
+            this.moveVehicle(moves.get(this.movePosition).invert());
+            moveCounterLabel.setText("Move: " + this.movePosition);
         }
     }//GEN-LAST:event_BackButtonActionPerformed
 
     private void ForwardButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ForwardButtonActionPerformed
     {//GEN-HEADEREND:event_ForwardButtonActionPerformed
-        try
+        if (this.movePosition < moves.size())
         {
-            if (this.movePosition < moves.size())
-            {
-                this.moveVehicle(moves.get(this.movePosition));
-                this.movePosition++;
-                moveCounterLabel.setText("Move: " + this.movePosition);
-            }
-            else
-            {
-                this.movePosition = this.moves.size() + 1;
-                Grid34.setBackground(defaultColor);
-                moveCounterLabel.setText("Move: " + this.movePosition);
-            }
-            
-            
+            this.moveVehicle(moves.get(this.movePosition));
+            this.movePosition++;
+            moveCounterLabel.setText("Move: " + this.movePosition);
         }
-        catch (InvalidMovementException ex)
+        else
         {
-            Logger.getLogger(GameBoard.class.getName()).log(Level.SEVERE, null,
-                ex);
+            this.movePosition = this.moves.size() + 1;
+            Grid34.setBackground(defaultColor);
+            moveCounterLabel.setText("Move: " + this.movePosition);
         }
     }//GEN-LAST:event_ForwardButtonActionPerformed
 
@@ -912,19 +964,23 @@ public class GameBoard
         }
         catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(GameBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GameBoard.class.getName()).log(
+                java.util.logging.Level.SEVERE, null, ex);
         }
         catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(GameBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GameBoard.class.getName()).log(
+                java.util.logging.Level.SEVERE, null, ex);
         }
         catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(GameBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GameBoard.class.getName()).log(
+                java.util.logging.Level.SEVERE, null, ex);
         }
         catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(GameBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GameBoard.class.getName()).log(
+                java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -936,17 +992,6 @@ public class GameBoard
                 new GameBoard().setVisible(true);
             }
         });
-    }
-
-    /**
-     * Gets the component with the specified name.
-     *
-     * @param name name of component to find
-     * @return the component with the specified name, null if not found
-     */
-    public Component getComponentWithName(String name)
-    {
-        return grids.get(name);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -993,6 +1038,6 @@ public class GameBoard
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel moveCounterLabel;
-    private javax.swing.JLabel totalMoves;
+    private javax.swing.JLabel totalMovesLabel;
     // End of variables declaration//GEN-END:variables
 }
