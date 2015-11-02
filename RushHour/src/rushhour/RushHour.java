@@ -14,6 +14,14 @@
  *
  * On the command line, run as java -jar RushHour.jar [filename] to solve the
  * file and open the solution in a GUI.
+ * 
+ * Algorithm overview:
+ * 1. make a queue and make the initial value be the first dynamic value of the
+ *    board
+ * 2. while the queue is not empty, pop the front
+ * 3. if the dequeued dynamic value has not been visited, find all adjacent
+ *    moves and push them onto the back of the queue
+ * 4. repeat step 2 - 4 until the red car escapes
  */
 package rushhour;
 
