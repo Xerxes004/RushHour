@@ -1,4 +1,3 @@
-
 /**
  * This is the main class for the Rush Hour game.
  *
