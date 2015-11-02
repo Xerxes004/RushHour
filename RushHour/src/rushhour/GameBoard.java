@@ -1,7 +1,20 @@
-
 /**
- * Author : Wesley Kelly
+ * This class is the GameBoard for the Rush Hour game.
+ * 
+ * @author Wesley Kelly, James Von Eiff
+ * @version 1.0
+ * 
+ * File: GameBoard.java
+ * Created: 27 October 2015
+ * 
+ * Copyright Cedarville University, its Computer Science faculty, and the 
+ * authors. All rights reserved.
+ * 
+ * Description: this class is the GameBoard GUI for the Rush Hour Game.
+ * The RushHour class manipulates this GUI to update it with vehicles and a
+ * proper solution array.
  */
+
 package rushhour;
 
 import java.awt.Color;
@@ -222,8 +235,7 @@ public class GameBoard
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         GridPanel = new javax.swing.JPanel();
         Grid02 = new javax.swing.JLabel();
@@ -607,7 +619,7 @@ public class GameBoard
             .addGroup(GridPanelLayout.createSequentialGroup()
                 .addGroup(GridPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GridPanelLayout.createSequentialGroup()
-                        .addGap(0, 6, Short.MAX_VALUE)
+                        .addGap(0, 10, Short.MAX_VALUE)
                         .addComponent(Grid00, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Grid01, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -738,8 +750,9 @@ public class GameBoard
                 .addContainerGap())
         );
 
-        ExitLabel.setFont(new java.awt.Font("Avenir Next", 0, 36)); // NOI18N
+        ExitLabel.setFont(new java.awt.Font("Avenir Next", 0, 24)); // NOI18N
         ExitLabel.setForeground(new java.awt.Color(255, 0, 51));
+        ExitLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ExitLabel.setText("EXIT");
         ExitLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ExitLabel.setFocusable(false);
@@ -751,19 +764,15 @@ public class GameBoard
 
         BackButton.setText("Prev");
         BackButton.setPreferredSize(new java.awt.Dimension(94, 29));
-        BackButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BackButtonActionPerformed(evt);
             }
         });
 
         ForwardButton.setText("Next");
-        ForwardButton.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        ForwardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ForwardButtonActionPerformed(evt);
             }
         });
@@ -795,7 +804,7 @@ public class GameBoard
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(GridPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ExitLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ExitLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGap(5, 5, 5)
@@ -819,9 +828,9 @@ public class GameBoard
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ForwardButton)))
+                            .addComponent(ForwardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(206, 206, 206)
+                        .addGap(216, 216, 216)
                         .addComponent(ExitLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)

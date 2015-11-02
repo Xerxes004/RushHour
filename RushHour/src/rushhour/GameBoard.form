@@ -43,7 +43,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="GridPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="ExitLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="ExitLabel" min="-2" pref="80" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -73,11 +73,11 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="BackButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ForwardButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ForwardButton" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="206" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="216" max="-2" attributes="0"/>
                       <Component id="ExitLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -110,7 +110,7 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                           <Component id="Grid00" min="-2" pref="80" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="Grid01" min="-2" pref="80" max="-2" attributes="0"/>
@@ -1058,11 +1058,12 @@
     <Component class="javax.swing.JLabel" name="ExitLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Avenir Next" size="36" style="0"/>
+          <Font name="Avenir Next" size="24" style="0"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="0" red="ff" type="rgb"/>
         </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="EXIT"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
