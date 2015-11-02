@@ -6,10 +6,6 @@
 
 package rushhour;
 
-/**
- *
- * @author wes
- */
 public class DynamicMove
 {
     public DynamicMove(String dynamicString, Move move)
@@ -18,8 +14,8 @@ public class DynamicMove
         this.move = move;
     }
     
-    private String dynamicString;
-    private Move move;
+    final private String dynamicString;
+    final private Move move;
     
     public String parent()
     {

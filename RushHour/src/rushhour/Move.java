@@ -23,6 +23,10 @@ public class Move
     private final int spaces;
     private final String direction;
     
+    /**
+     * Returns the inverse of this move so that the GUI can step backwards.
+     * @return the opposite move
+     */
     public Move invert()
     {
         String oppositeDirection = "invalid";
@@ -51,6 +55,7 @@ public class Move
         
         return new Move (this.color, this.spaces, oppositeDirection);
     }
+    
     public String color()
     {
         return this.color;

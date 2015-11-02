@@ -81,12 +81,12 @@ public class Vehicle
         return this.type;
     }
 
-    public Color color()
+    public Color colorValue()
     {
         return this.color;
     }
 
-    public String colorString()
+    public String color()
     {
         return this.colorString;
     }
@@ -191,7 +191,7 @@ public class Vehicle
     {
         if (orientation.equals("h"))
         {
-            if (x + length < 6)
+            if (x + length < 6 || this.color.equals("red"))
             {
                 x++;
                 return true;
